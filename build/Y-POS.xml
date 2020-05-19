@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE aida SYSTEM "http://aida.freehep.org/schemas/3.2.1/aida.dtd">
+<aida version="3.2.1">
+  <implementation package="tools" version="5.0.3"/>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="1">
+      <statistic direction="x" mean="-26.38843729849165242740128" rms="0"/>
+    </statistics>
+    <data1d>
+      <bin1d binNum="18" entries="1" height="1" error="1" weightedMean="-26.38843729849165242740128"/>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+  <histogram1d path="/" name="0" title="Y-pos">
+    <annotation>
+      <item key="axis_x.title" value=""/>
+    </annotation>
+    <axis direction="x" numberOfBins="90" min="-45" max="45"/>
+    <statistics entries="0">
+      <statistic direction="x" mean="0" rms="0"/>
+    </statistics>
+    <data1d>
+    </data1d>
+  </histogram1d>
+</aida>
