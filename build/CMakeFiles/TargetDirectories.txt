@@ -1,7 +1,0 @@
-/home/thomas/github/UCN/build/CMakeFiles/install/strip.dir
-/home/thomas/github/UCN/build/CMakeFiles/edit_cache.dir
-/home/thomas/github/UCN/build/CMakeFiles/UCN.dir
-/home/thomas/github/UCN/build/CMakeFiles/rebuild_cache.dir
-/home/thomas/github/UCN/build/CMakeFiles/list_install_components.dir
-/home/thomas/github/UCN/build/CMakeFiles/install/local.dir
-/home/thomas/github/UCN/build/CMakeFiles/install.dir
