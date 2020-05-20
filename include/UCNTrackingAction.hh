@@ -19,7 +19,7 @@ class UCNTrackingAction : public G4UserTrackingAction {
 
   private:
     G4double fTime_birth,  fTime_end, fTimeAlive;
-    
+
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
