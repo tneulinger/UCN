@@ -24,28 +24,29 @@ UCNRunAction::~UCNRunAction()
 
 void UCNRunAction::BeginOfRunAction(const G4Run*)
 {
-  // get analysis manager
-  auto analysisManager = G4AnalysisManager::Instance();
-
-  // create histogram
-  analysisManager->CreateH1("0","Y-pos", 90, -45.0*CLHEP::mm, +45.0*CLHEP::mm);
-
-  // open file
-  G4String fileName = "Y-POS";
-  analysisManager->OpenFile(fileName);
+  // ===== POSITION BINNING AT TIME =====
+  // // get analysis manager
+  // auto analysisManager = G4AnalysisManager::Instance();
+  // // create histogram
+  // analysisManager->CreateH1("0","Y-pos", 90, -45.0*CLHEP::mm, +45.0*CLHEP::mm);
+  // // open file
+  // G4String fileName = "Y-POS";
+  // analysisManager->OpenFile(fileName);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void UCNRunAction::EndOfRunAction(const G4Run*)
 {
-  // get analysis manager
-  auto analysisManager = G4AnalysisManager::Instance();
+  // ===== POSITION BINNING AT TIME =====
+  // // get analysis manager
+  // auto analysisManager = G4AnalysisManager::Instance();
+  // // save histogram and write file
+  // analysisManager->Write();
+  // analysisManager->CloseFile();
 
-  // save histogram and write file
-  analysisManager->Write();
-  analysisManager->CloseFile();
 
+  // ===== BOUNDARY PROCESS TABLE =====
   // G4ProcessTable* processTable = G4ProcessTable::GetProcessTable();
   //
   // G4UCNBoundaryProcess* ucnBoundaryProcess =

@@ -1,0 +1,18 @@
+1) "Alive time": (Currently commented out.)
+  Calculate time that UCN was in simulation. In UCNTrackingAction, get time of
+  "birth" in PreUserTrackingAction. Get time of "death" in
+  PostUserTrackingAction. Output difference in seconds to a file.
+
+2) Y-position binning at given time: (Currently commented out.)
+  Generate histogram of y-positions of UCNs at given time within some time
+  window. In UCNSteppingAction, under UserSteppingAction put in time of interest
+  and time window. Then along each step, check to see what time it is, and if it
+  is the time of interest (within the desire time window), get the position and
+  fill the histogram. Geant4 propagates UCNs along steps of some maximum length,
+  so make sure that the step size is small enough in (under maxStep in
+  UCNDetectorConstruction Construct method). To avoid counting the UCN more than
+  once, there is a boolean flag in UCNEventAction (fHaveBinnedIt). At the
+  beginning of each event, this is set to false. Once the UCN has been binned,
+  it is set to true. Then at the end of the event it is reset to false. The
+  histogram is initialized in UCNRunAction BeginOfRunAction and written to and
+  closed in EndOfRunAction.  
