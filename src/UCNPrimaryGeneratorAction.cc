@@ -41,7 +41,7 @@ void UCNPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 {
   // This function is called at the begining of event
 
-  fParticleGun->SetParticlePosition(G4ThreeVector(500.0, 500.0, 500.0));
+  fParticleGun->SetParticlePosition(G4ThreeVector(250.0, 900.0, 250.0));
   fParticleGun->SetParticlePolarization(G4ThreeVector(0,1,0));
 
   // uniform random energy

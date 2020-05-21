@@ -113,17 +113,23 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
   worldLogVol->SetMaterial( (G4Material::GetMaterial("G4_Galactic")) );
   G4cout << "World name: " << worldLogVol->GetName() << G4endl;
 
-  // set daughter material to nickel
+  // set all daughter materials to nickel
   G4int numberOfDaughters = worldLogVol->GetNoDaughters();
   G4cout << "Number of daughters to world: " << numberOfDaughters << G4endl;
-  G4int daughterIndex = 0;
-  G4VPhysicalVolume* daughterPhysVol   = worldLogVol->GetDaughter(daughterIndex);
-  G4LogicalVolume*   daughterLogVolume = daughterPhysVol->GetLogicalVolume();
-  G4String           daughterName      = daughterLogVolume->GetName();
-  // G4cerr << "Daughter name: "     << daughterName << G4endl;
-  // G4cerr << "Old daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
-  daughterLogVolume->SetMaterial( (G4Material::GetMaterial("Nickel")) );
-  // G4cerr << "New daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
+  G4VPhysicalVolume* daughterPhysVol;
+  G4LogicalVolume*   daughterLogVolume;
+  G4String           daughterName;
+  for (G4int daughterIndex = 0; daughterIndex < numberOfDaughters; daughterIndex++)
+  {
+    daughterPhysVol   = worldLogVol->GetDaughter(daughterIndex);
+    daughterLogVolume = daughterPhysVol->GetLogicalVolume();
+    daughterName      = daughterLogVolume->GetName();
+
+    // G4cerr << "Daughter name: "     << daughterName << G4endl;
+    // G4cerr << "Old daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
+    daughterLogVolume->SetMaterial( (G4Material::GetMaterial("Nickel")) );
+    // G4cerr << "New daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
+  }
 
 
   // ========== USER LIMITS ==========

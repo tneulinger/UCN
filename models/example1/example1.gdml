@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <materials>
+
+        <element name="dummy" formula="DUMMY" Z="1"> <atom value="1."/> </element>
+
+        <material name="Dummy_Vacuum" state="solid">
+            <D value="1.00" unit="g/cm3"/>
+            <fraction n="1." ref="dummy"/>
+         </material>
+
+         <material name="Dummy_Nickel" state="solid">
+            <D value="1.00" unit="g/cm3"/>
+            <fraction n="1." ref="dummy"/>
+         </material>
+
+    </materials>
+
+    <solids>
+        <box lunit="mm" name="world_solid" x="10000.0" y="10000.0" z="10000.0" />
+    </solids>
+
+    <structure>
+        <volume name="world_volume">
+            <materialref ref="Dummy_Vacuum"/>
+            <solidref ref="world_solid"/>
+
+            <physvol>
+                <file name="example1 - bottle_Dummy_Nickel-1.STL.gdml"/>
+             </physvol>
+            <physvol>
+                <file name="example1 - pipe_Dummy_Nickel-1.STL.gdml"/>
+             </physvol>
+            <physvol>
+                <file name="example1 - source_Dummy_Nickel-1.STL.gdml"/>
+             </physvol>
+
+
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="world_volume"/>
+    </setup>
+</gdml>
