@@ -23,8 +23,6 @@ class UCNDetectorConstruction : public G4VUserDetectorConstruction
 
   private:
 
-    G4Material*        fVacuum;
-    G4Material*        fGuideMaterial;
     G4VPhysicalVolume* fWorldPhysVol;
 
     static G4ThreadLocal G4UniformGravityField* fField;

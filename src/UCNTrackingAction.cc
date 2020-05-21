@@ -38,7 +38,8 @@ void UCNTrackingAction::PostUserTrackingAction(const G4Track* track)
   // G4int ID = track->GetTrackID();
   // if (ID == 1)
   // {
-  //   aliveTimeFile << fTimeAlive << " " << std::endl;
+  //   G4cerr << "ALIVE TIME === " << fTimeAlive << G4endl;
+  //   // aliveTimeFile << fTimeAlive << " " << std::endl;
   // }
 
 }

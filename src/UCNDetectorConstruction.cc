@@ -38,7 +38,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 UCNDetectorConstruction::UCNDetectorConstruction(G4VPhysicalVolume *setWorld)
- : fWorldPhysVol(0), fVacuum(0), fGuideMaterial(0)
+ : fWorldPhysVol(0)
 {
   fWorldPhysVol = setWorld;
   DefineMaterials();
@@ -55,25 +55,33 @@ UCNDetectorConstruction::~UCNDetectorConstruction()
 
 void UCNDetectorConstruction::DefineMaterials()
 {
+  G4String name, symbol;
+  G4double z, a, density, nel;
   G4NistManager* nistMan = G4NistManager::Instance();
 
-  fVacuum = nistMan->FindOrBuildMaterial("G4_Galactic");
-  fGuideMaterial = nistMan->FindOrBuildMaterial("G4_Ni");
+  // Vacuum
+  nistMan->FindOrBuildMaterial("G4_Galactic");
+  // G4Material* Vacuum = nistMan->FindOrBuildMaterial("G4_Galactic");
 
-  G4UCNMaterialPropertiesTable* MPT = new G4UCNMaterialPropertiesTable();
+  // Nickel
+  G4Element* elNi = new G4Element(name="Nickel", symbol="Ni", z=28., a=58.7*g/mole);
+  G4Material* Nickel = new G4Material(name="Nickel", density= 8.908*g/cm3, nel=1);
+  Nickel->AddElement(elNi,1);
 
-  //  MPT->AddConstProperty("REFLECTIVITY",1.);
-  MPT->AddConstProperty("DIFFUSION",0.1);
-  MPT->AddConstProperty("FERMIPOT",252.0); // Gollub, Table 2.1 in neV
-  MPT->AddConstProperty("SPINFLIP",0.);
-  // MPT->AddConstProperty("LOSS", 12.5e-5); //  Gollub, Table 2.1, f = W/V
-  MPT->AddConstProperty("LOSS", 0);
-  MPT->AddConstProperty("LOSSCS",0.);
-  MPT->AddConstProperty("ABSCS",4.49);  // 1/v loss cross-section  at room temp.
-  MPT->AddConstProperty("SCATCS",18.5); // (incoherent) "elastic" scattering cs
+  G4UCNMaterialPropertiesTable* MPTNickel = new G4UCNMaterialPropertiesTable();
+  // MPTNickel->AddConstProperty("REFLECTIVITY", 1.);
+  MPTNickel->AddConstProperty("DIFFUSION", 0.1);
+  MPTNickel->AddConstProperty("FERMIPOT",  252.0);   // Gollub, Table 2.1 in neV
+  MPTNickel->AddConstProperty("SPINFLIP",  0.);
+  MPTNickel->AddConstProperty("LOSS",      12.5e-5); //  Gollub, Table 2.1, f = W/V
+  MPTNickel->AddConstProperty("LOSSCS",    0.);
+  MPTNickel->AddConstProperty("ABSCS",     4.49);    // 1/v loss cross-section  at room temp.
+  MPTNickel->AddConstProperty("SCATCS",    18.5);    // (incoherent) "elastic" scattering cs
+  Nickel->SetMaterialPropertiesTable(MPTNickel);
+
+  // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
   // G4double neV = 1.e-9*eV;
-
   // MPT->SetMicroRoughnessParameters(30*nm, 1*nm,
   //                                  180, 1000,
   //                                  0*degree, 90*degree,
@@ -93,10 +101,6 @@ void UCNDetectorConstruction::DefineMaterials()
   //        10) number of angles phi_o   in the look-up table calculation
   //        11) angular cut
 
-
-  fGuideMaterial->SetMaterialPropertiesTable(MPT);
-
-  G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -104,13 +108,31 @@ void UCNDetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* UCNDetectorConstruction::Construct()
 {
 
-  G4double maxStep = 1*mm;
-  G4double maxTime = 5.01*s;
+  // set world material to vacuum
+  G4LogicalVolume* worldLogVol  = fWorldPhysVol->GetLogicalVolume();
+  worldLogVol->SetMaterial( (G4Material::GetMaterial("G4_Galactic")) );
+  G4cout << "World name: " << worldLogVol->GetName() << G4endl;
 
+  // set daughter material to nickel
+  G4int numberOfDaughters = worldLogVol->GetNoDaughters();
+  G4cout << "Number of daughters to world: " << numberOfDaughters << G4endl;
+  G4int daughterIndex = 0;
+  G4VPhysicalVolume* daughterPhysVol   = worldLogVol->GetDaughter(daughterIndex);
+  G4LogicalVolume*   daughterLogVolume = daughterPhysVol->GetLogicalVolume();
+  G4String           daughterName      = daughterLogVolume->GetName();
+  // G4cerr << "Daughter name: "     << daughterName << G4endl;
+  // G4cerr << "Old daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
+  daughterLogVolume->SetMaterial( (G4Material::GetMaterial("Nickel")) );
+  // G4cerr << "New daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
+
+
+  // ========== USER LIMITS ==========
+  G4double maxStep = 0.5*mm;
+  G4double maxTime = 100.*s;
   G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
   // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
-
-  fWorldPhysVol->GetLogicalVolume()->SetUserLimits(stepLimit);
+  worldLogVol->SetUserLimits(stepLimit);
+  // =================================
 
   //-visualization
   // G4VisAttributes* Red        = new G4VisAttributes( G4Colour(255/255. ,0/255.   ,0/255.   ));
@@ -121,7 +143,7 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
 
   fWorldPhysVol->GetLogicalVolume()-> SetVisAttributes(G4VisAttributes::Invisible);
 
-  G4LogicalVolumeStore* MyGDML = G4LogicalVolumeStore::GetInstance();
+  // G4LogicalVolumeStore* MyGDML = G4LogicalVolumeStore::GetInstance();
   // MyGDML->GetVolume("example1")->SetVisAttributes(LightGreen);
   // MyGDML->GetVolume("example2")->SetVisAttributes(LightGreen);
   // MyGDML->GetVolume("example3")->SetVisAttributes(LightGreen);

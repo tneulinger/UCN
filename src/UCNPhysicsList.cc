@@ -8,7 +8,7 @@
 
 UCNPhysicsList::UCNPhysicsList() : G4VModularPhysicsList()
 {
-    // RegisterPhysics(new G4DecayPhysics());
+    RegisterPhysics(new G4DecayPhysics());
     RegisterPhysics(new UCNExtraPhysics());
 }
 
