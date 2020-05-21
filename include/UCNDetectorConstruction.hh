@@ -13,7 +13,7 @@ class UCNDetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
 
-    UCNDetectorConstruction();
+    UCNDetectorConstruction(G4VPhysicalVolume *setWorld);
     virtual ~UCNDetectorConstruction();
 
   public:
@@ -25,6 +25,7 @@ class UCNDetectorConstruction : public G4VUserDetectorConstruction
 
     G4Material*        fVacuum;
     G4Material*        fGuideMaterial;
+    G4VPhysicalVolume* fWorldPhysVol;
 
     static G4ThreadLocal G4UniformGravityField* fField;
 

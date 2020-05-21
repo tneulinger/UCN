@@ -37,10 +37,10 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-UCNDetectorConstruction::UCNDetectorConstruction()
- : fVacuum(0), fGuideMaterial(0)
+UCNDetectorConstruction::UCNDetectorConstruction(G4VPhysicalVolume *setWorld)
+ : fWorldPhysVol(0), fVacuum(0), fGuideMaterial(0)
 {
-  // materials
+  fWorldPhysVol = setWorld;
   DefineMaterials();
 }
 
@@ -60,25 +60,16 @@ void UCNDetectorConstruction::DefineMaterials()
   fVacuum = nistMan->FindOrBuildMaterial("G4_Galactic");
   fGuideMaterial = nistMan->FindOrBuildMaterial("G4_Ni");
 
-  // --- Ni diffuse 10%
-
   G4UCNMaterialPropertiesTable* MPT = new G4UCNMaterialPropertiesTable();
 
   //  MPT->AddConstProperty("REFLECTIVITY",1.);
-  //  Commented out above line as REFLECTIVITY=1 by default in
-  //  G4OpBoundaryProcess.  Also use AddProperty to set REFLECTIVITY if needed
   MPT->AddConstProperty("DIFFUSION",0.1);
   MPT->AddConstProperty("FERMIPOT",252.0); // Gollub, Table 2.1 in neV
   MPT->AddConstProperty("SPINFLIP",0.);
   // MPT->AddConstProperty("LOSS", 12.5e-5); //  Gollub, Table 2.1, f = W/V
   MPT->AddConstProperty("LOSS", 0);
   MPT->AddConstProperty("LOSSCS",0.);
-
-  // this number is the absorption cross section for 2200 m/s neutrons
-  MPT->AddConstProperty("ABSCS",4.49); // 1/v loss cross-section  at room temp.
-
-  // this number is the total bound scattering cross section for natural nickel
-  // in barns
+  MPT->AddConstProperty("ABSCS",4.49);  // 1/v loss cross-section  at room temp.
   MPT->AddConstProperty("SCATCS",18.5); // (incoherent) "elastic" scattering cs
 
   // G4double neV = 1.e-9*eV;
@@ -112,69 +103,6 @@ void UCNDetectorConstruction::DefineMaterials()
 
 G4VPhysicalVolume* UCNDetectorConstruction::Construct()
 {
-  //
-  // World
-  //
-
-  G4double worldSizeX =  1.*m;
-  G4double worldSizeY =  1.*m;
-  G4double worldSizeZ =  1.*m;
-
-  G4Box* solidWorld = new G4Box("World",
-                                worldSizeX/2.,worldSizeY/2.,worldSizeZ/2.);
-
-  G4LogicalVolume* logicWorld = new G4LogicalVolume(solidWorld,
-                                                    fVacuum,
-                                                    "World");
-
-  G4VPhysicalVolume* physiWorld = new G4PVPlacement(0,
-                                                    G4ThreeVector(),
-                                                    "World",
-                                                    logicWorld,
-                                                    0,
-                                                    false,
-                                                    0);
-
-// --------------------------------- Guide -------------------------------------
-
-  G4double GuideR =  45.*mm;
-  G4double GuideW =   2.*mm;
-  G4double GuideL = 500.*mm;
-
-  G4Tubs* solidGuide = new G4Tubs("SolidGuide",
-                                  GuideR,GuideR+GuideW,GuideL/2.,0.,twopi);
-
-  G4LogicalVolume* logicGuide = new G4LogicalVolume(solidGuide,
-                                                    fGuideMaterial,
-                                                    "Guide");
-
-  new G4PVPlacement(0,G4ThreeVector(),"Guide",logicGuide,physiWorld,false,0);
-
-// ------------------------------ End Plate 1  ---------------------------------
-
-  G4Tubs* solidEndPlate1 = new G4Tubs("EndPlate1",0.,GuideR, GuideW/2., 0.,twopi);
-
-  G4LogicalVolume* logicEndPlate1 = new G4LogicalVolume(solidEndPlate1,
-                                                       fGuideMaterial,
-                                                       "EndPlate1");
-
-  G4ThreeVector endPlatePos1 = G4ThreeVector(0.,0.,GuideL/2.+GuideW/2.);
-
-  new G4PVPlacement(0,endPlatePos1,"EndPlate1",logicEndPlate1,physiWorld,false,0);
-
-// ------------------------------ End Plate 2  ---------------------------------
-
-  G4Tubs* solidEndPlate2 = new G4Tubs("EndPlate2",0.,GuideR, GuideW/2., 0.,twopi);
-
-  G4LogicalVolume* logicEndPlate2 = new G4LogicalVolume(solidEndPlate2,
-                                                       fGuideMaterial,
-                                                       "EndPlate2");
-
-  G4ThreeVector endPlatePos2 = G4ThreeVector(0.,0.,-GuideL/2.-GuideW/2.);
-
-  new G4PVPlacement(0,endPlatePos2,"EndPlate2",logicEndPlate2,physiWorld,false,0);
-
-// -----------------------------------------------------------------------------
 
   G4double maxStep = 1*mm;
   G4double maxTime = 5.01*s;
@@ -182,33 +110,22 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
   G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
   // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
 
-  logicWorld->SetUserLimits(stepLimit);
+  fWorldPhysVol->GetLogicalVolume()->SetUserLimits(stepLimit);
 
-  //
-  // Visualization attributes
-  //
+  //-visualization
+  // G4VisAttributes* Red        = new G4VisAttributes( G4Colour(255/255. ,0/255.   ,0/255.   ));
+  // G4VisAttributes* Yellow     = new G4VisAttributes( G4Colour(255/255. ,255/255. ,0/255.   ));
+  // G4VisAttributes* LightBlue  = new G4VisAttributes( G4Colour(0/255.   ,204/255. ,204/255. ));
+  // G4VisAttributes* LightGreen = new G4VisAttributes( G4Colour(153/255. ,255/255. ,153/255. ));
+  // G4VisAttributes* White      = new G4VisAttributes( G4Colour(255/255. ,355/255. ,255/255. ));
 
-  G4VisAttributes* guideColor = new G4VisAttributes(G4Colour(0.0,0.0,1.0));
-  guideColor->SetVisibility(true);
-  guideColor->SetForceWireframe(true);
+  fWorldPhysVol->GetLogicalVolume()-> SetVisAttributes(G4VisAttributes::Invisible);
 
-  G4VisAttributes* endPlateColor1 = new G4VisAttributes(G4Colour(1.0,0.0,0.0));
-  endPlateColor1->SetVisibility(true);
-  endPlateColor1->SetForceWireframe(true);
-
-  G4VisAttributes* endPlateColor2 = new G4VisAttributes(G4Colour(1.0,0.0,0.0));
-  endPlateColor2->SetVisibility(true);
-  endPlateColor2->SetForceWireframe(true);
-
-  logicWorld->SetVisAttributes(G4VisAttributes::GetInvisible());
-  logicGuide->SetVisAttributes(guideColor);
-  logicEndPlate1->SetVisAttributes(endPlateColor1);
-  logicEndPlate2->SetVisAttributes(endPlateColor2);
-
-  //
-  //always return the physical World
-  //
-  return physiWorld;
+  G4LogicalVolumeStore* MyGDML = G4LogicalVolumeStore::GetInstance();
+  // MyGDML->GetVolume("example1")->SetVisAttributes(LightGreen);
+  // MyGDML->GetVolume("example2")->SetVisAttributes(LightGreen);
+  // MyGDML->GetVolume("example3")->SetVisAttributes(LightGreen);
+  return fWorldPhysVol;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
