@@ -1,0 +1,101 @@
+// Materials:
+//    * DPE
+//    * Nickel
+//    * Vacuum
+
+
+G4String name, symbol;
+G4double z, a, density;
+G4int iz, n, natoms, ncomponents, natoms;
+G4NistManager* nistMan = G4NistManager::Instance();
+
+
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+// =========================== DPE
+// Name = "DPE"
+G4Isotope* isoD = new G4Isotope(name="H2", iz=1, n=2, a=2.0141*g/mole);
+G4Element* elD  = new G4Element(name="Deuterium", symbol="D", ncomponents=1);
+elD->AddIsotope(isoD, abundance= 100.*perCent);
+G4Element* elC  = new G4Element(name="Carbon", symbol="C", z=6., a=12.011*g/mole);
+G4Material* DPE = new G4Material(name="DPE", density= 0.92*g/cm3, ncomponents=2);
+DPE->AddElement(elD, natoms=2);
+DPE->AddElement(elC, natoms=1);
+
+G4UCNMaterialPropertiesTable* MPTDPE = new G4UCNMaterialPropertiesTable();
+// MPTNickel->AddConstProperty("REFLECTIVITY", 1.);
+MPTDPE->AddConstProperty("DIFFUSION", 0.1);
+MPTDPE->AddConstProperty("FERMIPOT",  214.7);  // Appl. Phys. Lett. 107, 121604 (2015); https://doi.org/10.1063/1.4931388
+MPTDPE->AddConstProperty("SPINFLIP",  0.);
+MPTDPE->AddConstProperty("LOSS",      1.3e-4); //  Appl. Phys. Lett. 107, 121604 (2015); https://doi.org/10.1063/1.4931388
+MPTDPE->AddConstProperty("LOSSCS",    0.);
+MPTDPE->AddConstProperty("ABSCS",     4.49);   // 1/v loss cross-section  at room temp.
+MPTDPE->AddConstProperty("SCATCS",    18.5);   // (incoherent) "elastic" scattering cs
+DPE->SetMaterialPropertiesTable(MPTDPE);
+
+
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+// =========================== NICKEL
+// Name = "Nickel"
+G4Element*    elNi = new G4Element(name="Nickel", symbol="Ni", z=28., a=58.7*g/mole);
+G4Material* Nickel = new G4Material(name="Nickel", density= 8.908*g/cm3, ncomponents=1);
+Nickel->AddElement(elNi,1);
+
+G4UCNMaterialPropertiesTable* MPTNickel = new G4UCNMaterialPropertiesTable();
+// MPTNickel->AddConstProperty("REFLECTIVITY", 1.);
+MPTNickel->AddConstProperty("DIFFUSION", 0.1);
+MPTNickel->AddConstProperty("FERMIPOT",  252.0);   // Gollub, Table 2.1 in neV
+MPTNickel->AddConstProperty("SPINFLIP",  0.);
+MPTNickel->AddConstProperty("LOSS",      12.5e-5); //  Gollub, Table 2.1, f = W/V
+MPTNickel->AddConstProperty("LOSSCS",    0.);
+MPTNickel->AddConstProperty("ABSCS",     4.49);    // https://www.ncnr.nist.gov/resources/n-lengths/elements/ni.html
+MPTNickel->AddConstProperty("SCATCS",    18.5);    // https://www.ncnr.nist.gov/resources/n-lengths/elements/ni.html
+Nickel->SetMaterialPropertiesTable(MPTNickel);
+
+
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+// =========================== VACUUM
+// Name = "Vacuum"
+nistMan->FindOrBuildMaterial("G4_Galactic");
+// G4Material* Vacuum = nistMan->FindOrBuildMaterial("G4_Galactic");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+// G4double neV = 1.e-9*eV;
+// MPT->SetMicroRoughnessParameters(30*nm, 1*nm,
+//                                  180, 1000,
+//                                  0*degree, 90*degree,
+//                                  1*neV, 1000*neV,
+//                                  15, 15,
+//                                  0.01*degree);
+// arguments:
+//         1) w = correlation length
+//         2) b = RMS roughness
+//         3) number of angles theta_i in the look-up tables
+//         4) number of energies in the look-up tables
+//         5) minimum value of theta_i
+//         6) maximum value of theta_i
+//         7) minimum value of E
+//         8) maximum value of E
+//         9) number of angles theta_o in the look-up table calculation
+//        10) number of angles phi_o   in the look-up table calculation
+//        11) angular cut
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -1,2 +1,5 @@
-# ignore build files
+# ignore build
 build/
+
+# ignore testing
+test/

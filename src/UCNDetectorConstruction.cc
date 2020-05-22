@@ -1,3 +1,4 @@
+#include "G4Isotope.hh"
 #include "G4Material.hh"
 #include "G4NistManager.hh"
 #include "G4UCNMaterialPropertiesTable.hh"
@@ -55,52 +56,9 @@ UCNDetectorConstruction::~UCNDetectorConstruction()
 
 void UCNDetectorConstruction::DefineMaterials()
 {
-  G4String name, symbol;
-  G4double z, a, density, nel;
-  G4NistManager* nistMan = G4NistManager::Instance();
-
-  // Vacuum
-  nistMan->FindOrBuildMaterial("G4_Galactic");
-  // G4Material* Vacuum = nistMan->FindOrBuildMaterial("G4_Galactic");
-
-  // Nickel
-  G4Element* elNi = new G4Element(name="Nickel", symbol="Ni", z=28., a=58.7*g/mole);
-  G4Material* Nickel = new G4Material(name="Nickel", density= 8.908*g/cm3, nel=1);
-  Nickel->AddElement(elNi,1);
-
-  G4UCNMaterialPropertiesTable* MPTNickel = new G4UCNMaterialPropertiesTable();
-  // MPTNickel->AddConstProperty("REFLECTIVITY", 1.);
-  MPTNickel->AddConstProperty("DIFFUSION", 0.1);
-  MPTNickel->AddConstProperty("FERMIPOT",  252.0);   // Gollub, Table 2.1 in neV
-  MPTNickel->AddConstProperty("SPINFLIP",  0.);
-  MPTNickel->AddConstProperty("LOSS",      12.5e-5); //  Gollub, Table 2.1, f = W/V
-  MPTNickel->AddConstProperty("LOSSCS",    0.);
-  MPTNickel->AddConstProperty("ABSCS",     4.49);    // 1/v loss cross-section  at room temp.
-  MPTNickel->AddConstProperty("SCATCS",    18.5);    // (incoherent) "elastic" scattering cs
-  Nickel->SetMaterialPropertiesTable(MPTNickel);
+  #include "UCNDetectorMaterials.icc"
 
   // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
-
-  // G4double neV = 1.e-9*eV;
-  // MPT->SetMicroRoughnessParameters(30*nm, 1*nm,
-  //                                  180, 1000,
-  //                                  0*degree, 90*degree,
-  //                                  1*neV, 1000*neV,
-  //                                  15, 15,
-  //                                  0.01*degree);
-  // arguments:
-  //         1) w = correlation length
-  //         2) b = RMS roughness
-  //         3) number of angles theta_i in the look-up tables
-  //         4) number of energies in the look-up tables
-  //         5) minimum value of theta_i
-  //         6) maximum value of theta_i
-  //         7) minimum value of E
-  //         8) maximum value of E
-  //         9) number of angles theta_o in the look-up table calculation
-  //        10) number of angles phi_o   in the look-up table calculation
-  //        11) angular cut
-
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
