@@ -3,6 +3,7 @@
 
 #include "globals.hh"
 #include "G4VUserPrimaryGeneratorAction.hh"
+#include "G4ThreeVector.hh"
 
 class G4Event;
 class G4ParticleGun;
@@ -20,12 +21,14 @@ public:
   virtual void GeneratePrimaries(G4Event*);
 
   void SetGunEnergy_neV(G4double e);
+  void SetGunPosition(G4ThreeVector xyz);
 
 private:
 
   G4ParticleGun*                 fParticleGun;
   UCNPrimaryGeneratorMessenger*  gunMessenger;
   G4double                       gunEnergy_neV;
+  G4ThreeVector                  gunPosition;   // mm
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

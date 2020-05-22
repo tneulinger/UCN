@@ -1,3 +1,8 @@
+User Controls:
+1) Set UCN initial KE in neV, e.g. "/gun/gunEnergy_neV 10".
+1) Set UCN initial position in mm, e.g. "/gun/gunEnergy_neV 100.0 230.0 10.0 mm".
+
+Hard Coded Controls:
 1) "Alive time": (Currently commented out.)
   Calculate time that UCN was in simulation. In UCNTrackingAction, get time of
   "birth" in PreUserTrackingAction. Get time of "death" in
@@ -15,4 +20,4 @@
   beginning of each event, this is set to false. Once the UCN has been binned,
   it is set to true. Then at the end of the event it is reset to false. The
   histogram is initialized in UCNRunAction BeginOfRunAction and written to and
-  closed in EndOfRunAction.  
+  closed in EndOfRunAction.
