@@ -1,0 +1,12 @@
+DPE:
+  * Density: Average PE density roughly 0.92 g/cm3. Replace H->D gives approximately
+    density -> (mass DPE)/(mass PE)*density = (16/14)*0.92 = 1.05 g/cm3.
+  * Fermi potential and loss: Appl. Phys. Lett. 107, 121604 (2015); https://doi.org/10.1063/1.4931388
+  * Bulk cross sections are wrong!
+
+Nickel:
+  * Fermi potential and loss: Golub Table 2.1.
+  * Bulk cross sections: Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.
+
+Vacuum:
+  *

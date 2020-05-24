@@ -54,7 +54,7 @@ MATERIALS = '''
         <!-- MATERIALS -->
         <!-- DPE -->
         <material name="DPE" formula="D2C">
-            <D value="0.92" unit="g/cm3"/>
+            <D value="1.05" unit="g/cm3"/>
             <composite n="2" ref="deuterium"/>
             <composite n="1" ref="carbon"/>
         </material>
@@ -68,12 +68,7 @@ MATERIALS = '''
             <D value="1.e-25" unit="g/cm3" />
             <fraction n="1.0" ref="videRef" />
         </material>
-
         <!-- MATERIALS -->
-
-
-
-
 
     </materials>
 '''
