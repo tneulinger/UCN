@@ -3,17 +3,40 @@
 
     <materials>
 
-        <element name="dummy" formula="DUMMY" Z="1"> <atom value="1."/> </element>
+        <!-- ISOTOPES -->
+        <isotope name="H2" Z="1"  N="2"> <atom unit="g/mole" value="2.0141"/> </isotope>
+        <!-- ISOTOPES -->
 
-        <material name="Dummy_Vacuum" state="solid">
-            <D value="1.00" unit="g/cm3"/>
-            <fraction n="1." ref="dummy"/>
-         </material>
+        <!-- ELEMENTS -->
+        <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
+        <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
+        <element name="carbon"    formula="C" Z="6"> <atom value="12.011"/> </element>
+        <element name="nickel"    formula="Ni"  Z="28">   <atom value="58.6934"/>  </element>
+        <!-- ELEMENTS -->
 
-         <material name="Dummy_Nickel" state="solid">
-            <D value="1.00" unit="g/cm3"/>
-            <fraction n="1." ref="dummy"/>
-         </material>
+        <!-- MATERIALS -->
+        <!-- DPE -->
+        <material name="DPE" formula="D2C">
+            <D value="0.92" unit="g/cm3"/>
+            <composite n="2" ref="deuterium"/>
+            <composite n="1" ref="carbon"/>
+        </material>
+        <!-- NICKEL -->
+        <material name="Nickel" state="solid">
+           <D value="8.96" unit="g/cm3"/>
+           <fraction n="1." ref="nickel"/>
+        </material>
+        <!-- VACUUM -->
+        <material name="Vacuum">
+            <D value="1.e-25" unit="g/cm3" />
+            <fraction n="1.0" ref="videRef" />
+        </material>
+
+        <!-- MATERIALS -->
+
+
+
+
 
     </materials>
 
@@ -23,17 +46,17 @@
 
     <structure>
         <volume name="world_volume">
-            <materialref ref="Dummy_Vacuum"/>
+            <materialref ref="Vacuum"/>
             <solidref ref="world_solid"/>
 
             <physvol>
-                <file name="example1 - bottle_Dummy_Nickel-1.STL.gdml"/>
+                <file name="example1 - bottle_DPE-1.STL.gdml"/>
              </physvol>
             <physvol>
-                <file name="example1 - pipe_Dummy_Nickel-1.STL.gdml"/>
+                <file name="example1 - pipe_Nickel-1.STL.gdml"/>
              </physvol>
             <physvol>
-                <file name="example1 - source_Dummy_Nickel-1.STL.gdml"/>
+                <file name="example1 - source_Nickel-1.STL.gdml"/>
              </physvol>
 
 

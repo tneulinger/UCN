@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <define>
+        <position name="example1 - source_Nickel-1.STL_v0" unit="mm" x="3.547954" y="1010.021" z="3.48245"/>
+        <position name="example1 - source_Nickel-1.STL_v1" unit="mm" x="3.547954" y="1010.021" z="503.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v2" unit="mm" x="3.547954" y="810.0211" z="3.48245"/>
+        <position name="example1 - source_Nickel-1.STL_v3" unit="mm" x="3.547954" y="810.0211" z="503.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v4" unit="mm" x="503.548" y="1010.021" z="503.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v5" unit="mm" x="503.548" y="810.0211" z="503.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v6" unit="mm" x="503.548" y="1010.021" z="3.48245"/>
+        <position name="example1 - source_Nickel-1.STL_v7" unit="mm" x="503.548" y="810.0211" z="3.48245"/>
+        <position name="example1 - source_Nickel-1.STL_v8" unit="mm" x="291.8502" y="1010.021" z="221.3431"/>
+        <position name="example1 - source_Nickel-1.STL_v9" unit="mm" x="296.8492" y="1010.021" z="228.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v10" unit="mm" x="300.5326" y="1010.021" z="236.3814"/>
+        <position name="example1 - source_Nickel-1.STL_v11" unit="mm" x="210.2467" y="1010.021" z="278.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v12" unit="mm" x="215.2457" y="1010.021" z="285.6218"/>
+        <position name="example1 - source_Nickel-1.STL_v13" unit="mm" x="285.6873" y="1010.021" z="215.1802"/>
+        <position name="example1 - source_Nickel-1.STL_v14" unit="mm" x="278.548" y="1010.021" z="210.1812"/>
+        <position name="example1 - source_Nickel-1.STL_v15" unit="mm" x="270.649" y="1010.021" z="206.4978"/>
+        <position name="example1 - source_Nickel-1.STL_v16" unit="mm" x="236.4469" y="1010.021" z="206.4978"/>
+        <position name="example1 - source_Nickel-1.STL_v17" unit="mm" x="228.548" y="1010.021" z="210.1812"/>
+        <position name="example1 - source_Nickel-1.STL_v18" unit="mm" x="221.4086" y="1010.021" z="215.1802"/>
+        <position name="example1 - source_Nickel-1.STL_v19" unit="mm" x="215.2457" y="1010.021" z="221.3431"/>
+        <position name="example1 - source_Nickel-1.STL_v20" unit="mm" x="210.2467" y="1010.021" z="228.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v21" unit="mm" x="206.5633" y="1010.021" z="236.3814"/>
+        <position name="example1 - source_Nickel-1.STL_v22" unit="mm" x="262.2304" y="1010.021" z="204.2421"/>
+        <position name="example1 - source_Nickel-1.STL_v23" unit="mm" x="253.548" y="1010.021" z="203.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v24" unit="mm" x="244.8655" y="1010.021" z="204.2421"/>
+        <position name="example1 - source_Nickel-1.STL_v25" unit="mm" x="206.5633" y="1010.021" z="270.5835"/>
+        <position name="example1 - source_Nickel-1.STL_v26" unit="mm" x="204.3076" y="1010.021" z="244.8"/>
+        <position name="example1 - source_Nickel-1.STL_v27" unit="mm" x="203.548" y="1010.021" z="253.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v28" unit="mm" x="204.3076" y="1010.021" z="262.1649"/>
+        <position name="example1 - source_Nickel-1.STL_v29" unit="mm" x="221.4086" y="1010.021" z="291.7847"/>
+        <position name="example1 - source_Nickel-1.STL_v30" unit="mm" x="228.548" y="1010.021" z="296.7837"/>
+        <position name="example1 - source_Nickel-1.STL_v31" unit="mm" x="236.4469" y="1010.021" z="300.4671"/>
+        <position name="example1 - source_Nickel-1.STL_v32" unit="mm" x="244.8655" y="1010.021" z="302.7228"/>
+        <position name="example1 - source_Nickel-1.STL_v33" unit="mm" x="253.548" y="1010.021" z="303.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v34" unit="mm" x="262.2304" y="1010.021" z="302.7228"/>
+        <position name="example1 - source_Nickel-1.STL_v35" unit="mm" x="270.649" y="1010.021" z="300.4671"/>
+        <position name="example1 - source_Nickel-1.STL_v36" unit="mm" x="278.548" y="1010.021" z="296.7837"/>
+        <position name="example1 - source_Nickel-1.STL_v37" unit="mm" x="285.6873" y="1010.021" z="291.7847"/>
+        <position name="example1 - source_Nickel-1.STL_v38" unit="mm" x="300.5326" y="1010.021" z="270.5835"/>
+        <position name="example1 - source_Nickel-1.STL_v39" unit="mm" x="302.7883" y="1010.021" z="262.1649"/>
+        <position name="example1 - source_Nickel-1.STL_v40" unit="mm" x="303.548" y="1010.021" z="253.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v41" unit="mm" x="302.7883" y="1010.021" z="244.8"/>
+        <position name="example1 - source_Nickel-1.STL_v42" unit="mm" x="291.8502" y="1010.021" z="285.6218"/>
+        <position name="example1 - source_Nickel-1.STL_v43" unit="mm" x="296.8492" y="1010.021" z="278.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v44" unit="mm" x="253.548" y="1011.021" z="303.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v45" unit="mm" x="262.2304" y="1011.021" z="302.7228"/>
+        <position name="example1 - source_Nickel-1.STL_v46" unit="mm" x="270.649" y="1011.021" z="300.4671"/>
+        <position name="example1 - source_Nickel-1.STL_v47" unit="mm" x="278.548" y="1011.021" z="296.7837"/>
+        <position name="example1 - source_Nickel-1.STL_v48" unit="mm" x="285.6873" y="1011.021" z="291.7847"/>
+        <position name="example1 - source_Nickel-1.STL_v49" unit="mm" x="291.8502" y="1011.021" z="285.6218"/>
+        <position name="example1 - source_Nickel-1.STL_v50" unit="mm" x="296.8492" y="1011.021" z="278.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v51" unit="mm" x="300.5326" y="1011.021" z="270.5835"/>
+        <position name="example1 - source_Nickel-1.STL_v52" unit="mm" x="302.7883" y="1011.021" z="262.1649"/>
+        <position name="example1 - source_Nickel-1.STL_v53" unit="mm" x="303.548" y="1011.021" z="253.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v54" unit="mm" x="302.7883" y="1011.021" z="244.8"/>
+        <position name="example1 - source_Nickel-1.STL_v55" unit="mm" x="300.5326" y="1011.021" z="236.3814"/>
+        <position name="example1 - source_Nickel-1.STL_v56" unit="mm" x="296.8492" y="1011.021" z="228.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v57" unit="mm" x="291.8502" y="1011.021" z="221.3431"/>
+        <position name="example1 - source_Nickel-1.STL_v58" unit="mm" x="285.6873" y="1011.021" z="215.1802"/>
+        <position name="example1 - source_Nickel-1.STL_v59" unit="mm" x="278.548" y="1011.021" z="210.1812"/>
+        <position name="example1 - source_Nickel-1.STL_v60" unit="mm" x="270.649" y="1011.021" z="206.4978"/>
+        <position name="example1 - source_Nickel-1.STL_v61" unit="mm" x="262.2304" y="1011.021" z="204.2421"/>
+        <position name="example1 - source_Nickel-1.STL_v62" unit="mm" x="253.548" y="1011.021" z="203.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v63" unit="mm" x="244.8655" y="1011.021" z="204.2421"/>
+        <position name="example1 - source_Nickel-1.STL_v64" unit="mm" x="236.4469" y="1011.021" z="206.4978"/>
+        <position name="example1 - source_Nickel-1.STL_v65" unit="mm" x="228.548" y="1011.021" z="210.1812"/>
+        <position name="example1 - source_Nickel-1.STL_v66" unit="mm" x="221.4086" y="1011.021" z="215.1802"/>
+        <position name="example1 - source_Nickel-1.STL_v67" unit="mm" x="215.2457" y="1011.021" z="221.3431"/>
+        <position name="example1 - source_Nickel-1.STL_v68" unit="mm" x="210.2467" y="1011.021" z="228.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v69" unit="mm" x="206.5633" y="1011.021" z="236.3814"/>
+        <position name="example1 - source_Nickel-1.STL_v70" unit="mm" x="204.3076" y="1011.021" z="244.8"/>
+        <position name="example1 - source_Nickel-1.STL_v71" unit="mm" x="203.548" y="1011.021" z="253.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v72" unit="mm" x="204.3076" y="1011.021" z="262.1649"/>
+        <position name="example1 - source_Nickel-1.STL_v73" unit="mm" x="206.5633" y="1011.021" z="270.5835"/>
+        <position name="example1 - source_Nickel-1.STL_v74" unit="mm" x="210.2467" y="1011.021" z="278.4825"/>
+        <position name="example1 - source_Nickel-1.STL_v75" unit="mm" x="215.2457" y="1011.021" z="285.6218"/>
+        <position name="example1 - source_Nickel-1.STL_v76" unit="mm" x="221.4086" y="1011.021" z="291.7847"/>
+        <position name="example1 - source_Nickel-1.STL_v77" unit="mm" x="228.548" y="1011.021" z="296.7837"/>
+        <position name="example1 - source_Nickel-1.STL_v78" unit="mm" x="236.4469" y="1011.021" z="300.4671"/>
+        <position name="example1 - source_Nickel-1.STL_v79" unit="mm" x="244.8655" y="1011.021" z="302.7228"/>
+        <position name="example1 - source_Nickel-1.STL_v80" unit="mm" x="2.547967" y="1011.021" z="504.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v81" unit="mm" x="2.547967" y="1011.021" z="2.482463"/>
+        <position name="example1 - source_Nickel-1.STL_v82" unit="mm" x="2.547967" y="809.0211" z="504.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v83" unit="mm" x="2.547967" y="809.0211" z="2.482463"/>
+        <position name="example1 - source_Nickel-1.STL_v84" unit="mm" x="504.5479" y="1011.021" z="504.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v85" unit="mm" x="504.5479" y="809.0211" z="504.4824"/>
+        <position name="example1 - source_Nickel-1.STL_v86" unit="mm" x="504.5479" y="1011.021" z="2.482463"/>
+        <position name="example1 - source_Nickel-1.STL_v87" unit="mm" x="504.5479" y="809.0211" z="2.482463"/>
+    </define>
+
+    <solids>
+        <tessellated aunit="deg" lunit="mm" name="example1 - source_Nickel-1.STL-SOL">
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v1" vertex3="example1 - source_Nickel-1.STL_v2"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v2" vertex2="example1 - source_Nickel-1.STL_v1" vertex3="example1 - source_Nickel-1.STL_v3"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v4" vertex3="example1 - source_Nickel-1.STL_v3"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v3" vertex2="example1 - source_Nickel-1.STL_v4" vertex3="example1 - source_Nickel-1.STL_v5"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v6" vertex3="example1 - source_Nickel-1.STL_v5"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v5" vertex2="example1 - source_Nickel-1.STL_v6" vertex3="example1 - source_Nickel-1.STL_v7"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v0" vertex3="example1 - source_Nickel-1.STL_v7"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v7" vertex2="example1 - source_Nickel-1.STL_v0" vertex3="example1 - source_Nickel-1.STL_v2"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v8" vertex2="example1 - source_Nickel-1.STL_v6" vertex3="example1 - source_Nickel-1.STL_v9"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v9" vertex2="example1 - source_Nickel-1.STL_v6" vertex3="example1 - source_Nickel-1.STL_v10"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v11" vertex2="example1 - source_Nickel-1.STL_v12" vertex3="example1 - source_Nickel-1.STL_v1"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v8" vertex2="example1 - source_Nickel-1.STL_v13" vertex3="example1 - source_Nickel-1.STL_v6"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v13" vertex3="example1 - source_Nickel-1.STL_v14"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v14" vertex3="example1 - source_Nickel-1.STL_v15"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v16" vertex2="example1 - source_Nickel-1.STL_v17" vertex3="example1 - source_Nickel-1.STL_v0"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v17" vertex3="example1 - source_Nickel-1.STL_v18"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v18" vertex2="example1 - source_Nickel-1.STL_v19" vertex3="example1 - source_Nickel-1.STL_v0"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v19" vertex3="example1 - source_Nickel-1.STL_v20"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v20" vertex3="example1 - source_Nickel-1.STL_v21"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v15" vertex2="example1 - source_Nickel-1.STL_v22" vertex3="example1 - source_Nickel-1.STL_v6"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v22" vertex3="example1 - source_Nickel-1.STL_v23"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v23" vertex3="example1 - source_Nickel-1.STL_v0"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v23" vertex3="example1 - source_Nickel-1.STL_v24"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v24" vertex3="example1 - source_Nickel-1.STL_v16"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v11" vertex2="example1 - source_Nickel-1.STL_v1" vertex3="example1 - source_Nickel-1.STL_v25"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v21" vertex2="example1 - source_Nickel-1.STL_v26" vertex3="example1 - source_Nickel-1.STL_v0"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v26" vertex3="example1 - source_Nickel-1.STL_v27"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v0" vertex2="example1 - source_Nickel-1.STL_v27" vertex3="example1 - source_Nickel-1.STL_v1"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v27" vertex3="example1 - source_Nickel-1.STL_v28"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v28" vertex3="example1 - source_Nickel-1.STL_v25"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v12" vertex2="example1 - source_Nickel-1.STL_v29" vertex3="example1 - source_Nickel-1.STL_v1"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v29" vertex3="example1 - source_Nickel-1.STL_v30"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v30" vertex3="example1 - source_Nickel-1.STL_v31"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v31" vertex2="example1 - source_Nickel-1.STL_v32" vertex3="example1 - source_Nickel-1.STL_v1"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v32" vertex3="example1 - source_Nickel-1.STL_v33"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v1" vertex2="example1 - source_Nickel-1.STL_v33" vertex3="example1 - source_Nickel-1.STL_v4"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v33" vertex3="example1 - source_Nickel-1.STL_v34"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v34" vertex2="example1 - source_Nickel-1.STL_v35" vertex3="example1 - source_Nickel-1.STL_v4"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v35" vertex3="example1 - source_Nickel-1.STL_v36"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v36" vertex3="example1 - source_Nickel-1.STL_v37"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v38" vertex2="example1 - source_Nickel-1.STL_v39" vertex3="example1 - source_Nickel-1.STL_v4"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v39" vertex3="example1 - source_Nickel-1.STL_v40"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v40" vertex3="example1 - source_Nickel-1.STL_v6"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v40" vertex3="example1 - source_Nickel-1.STL_v41"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v6" vertex2="example1 - source_Nickel-1.STL_v41" vertex3="example1 - source_Nickel-1.STL_v10"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v37" vertex2="example1 - source_Nickel-1.STL_v42" vertex3="example1 - source_Nickel-1.STL_v4"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v42" vertex3="example1 - source_Nickel-1.STL_v43"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v4" vertex2="example1 - source_Nickel-1.STL_v43" vertex3="example1 - source_Nickel-1.STL_v38"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v5" vertex2="example1 - source_Nickel-1.STL_v7" vertex3="example1 - source_Nickel-1.STL_v3"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v3" vertex2="example1 - source_Nickel-1.STL_v7" vertex3="example1 - source_Nickel-1.STL_v2"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v33" vertex2="example1 - source_Nickel-1.STL_v44" vertex3="example1 - source_Nickel-1.STL_v34"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v34" vertex2="example1 - source_Nickel-1.STL_v44" vertex3="example1 - source_Nickel-1.STL_v45"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v34" vertex2="example1 - source_Nickel-1.STL_v45" vertex3="example1 - source_Nickel-1.STL_v35"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v35" vertex2="example1 - source_Nickel-1.STL_v45" vertex3="example1 - source_Nickel-1.STL_v46"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v35" vertex2="example1 - source_Nickel-1.STL_v46" vertex3="example1 - source_Nickel-1.STL_v36"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v36" vertex2="example1 - source_Nickel-1.STL_v46" vertex3="example1 - source_Nickel-1.STL_v47"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v36" vertex2="example1 - source_Nickel-1.STL_v47" vertex3="example1 - source_Nickel-1.STL_v37"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v37" vertex2="example1 - source_Nickel-1.STL_v47" vertex3="example1 - source_Nickel-1.STL_v48"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v37" vertex2="example1 - source_Nickel-1.STL_v48" vertex3="example1 - source_Nickel-1.STL_v42"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v42" vertex2="example1 - source_Nickel-1.STL_v48" vertex3="example1 - source_Nickel-1.STL_v49"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v42" vertex2="example1 - source_Nickel-1.STL_v49" vertex3="example1 - source_Nickel-1.STL_v43"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v43" vertex2="example1 - source_Nickel-1.STL_v49" vertex3="example1 - source_Nickel-1.STL_v50"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v43" vertex2="example1 - source_Nickel-1.STL_v50" vertex3="example1 - source_Nickel-1.STL_v38"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v38" vertex2="example1 - source_Nickel-1.STL_v50" vertex3="example1 - source_Nickel-1.STL_v51"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v38" vertex2="example1 - source_Nickel-1.STL_v51" vertex3="example1 - source_Nickel-1.STL_v39"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v39" vertex2="example1 - source_Nickel-1.STL_v51" vertex3="example1 - source_Nickel-1.STL_v52"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v39" vertex2="example1 - source_Nickel-1.STL_v52" vertex3="example1 - source_Nickel-1.STL_v40"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v40" vertex2="example1 - source_Nickel-1.STL_v52" vertex3="example1 - source_Nickel-1.STL_v53"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v40" vertex2="example1 - source_Nickel-1.STL_v53" vertex3="example1 - source_Nickel-1.STL_v41"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v41" vertex2="example1 - source_Nickel-1.STL_v53" vertex3="example1 - source_Nickel-1.STL_v54"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v41" vertex2="example1 - source_Nickel-1.STL_v54" vertex3="example1 - source_Nickel-1.STL_v10"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v10" vertex2="example1 - source_Nickel-1.STL_v54" vertex3="example1 - source_Nickel-1.STL_v55"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v10" vertex2="example1 - source_Nickel-1.STL_v55" vertex3="example1 - source_Nickel-1.STL_v9"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v9" vertex2="example1 - source_Nickel-1.STL_v55" vertex3="example1 - source_Nickel-1.STL_v56"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v9" vertex2="example1 - source_Nickel-1.STL_v56" vertex3="example1 - source_Nickel-1.STL_v8"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v8" vertex2="example1 - source_Nickel-1.STL_v56" vertex3="example1 - source_Nickel-1.STL_v57"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v8" vertex2="example1 - source_Nickel-1.STL_v57" vertex3="example1 - source_Nickel-1.STL_v13"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v13" vertex2="example1 - source_Nickel-1.STL_v57" vertex3="example1 - source_Nickel-1.STL_v58"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v13" vertex2="example1 - source_Nickel-1.STL_v58" vertex3="example1 - source_Nickel-1.STL_v14"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v14" vertex2="example1 - source_Nickel-1.STL_v58" vertex3="example1 - source_Nickel-1.STL_v59"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v14" vertex2="example1 - source_Nickel-1.STL_v59" vertex3="example1 - source_Nickel-1.STL_v15"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v15" vertex2="example1 - source_Nickel-1.STL_v59" vertex3="example1 - source_Nickel-1.STL_v60"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v15" vertex2="example1 - source_Nickel-1.STL_v60" vertex3="example1 - source_Nickel-1.STL_v22"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v22" vertex2="example1 - source_Nickel-1.STL_v60" vertex3="example1 - source_Nickel-1.STL_v61"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v22" vertex2="example1 - source_Nickel-1.STL_v61" vertex3="example1 - source_Nickel-1.STL_v23"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v23" vertex2="example1 - source_Nickel-1.STL_v61" vertex3="example1 - source_Nickel-1.STL_v62"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v23" vertex2="example1 - source_Nickel-1.STL_v62" vertex3="example1 - source_Nickel-1.STL_v24"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v24" vertex2="example1 - source_Nickel-1.STL_v62" vertex3="example1 - source_Nickel-1.STL_v63"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v24" vertex2="example1 - source_Nickel-1.STL_v63" vertex3="example1 - source_Nickel-1.STL_v16"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v16" vertex2="example1 - source_Nickel-1.STL_v63" vertex3="example1 - source_Nickel-1.STL_v64"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v16" vertex2="example1 - source_Nickel-1.STL_v64" vertex3="example1 - source_Nickel-1.STL_v17"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v17" vertex2="example1 - source_Nickel-1.STL_v64" vertex3="example1 - source_Nickel-1.STL_v65"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v17" vertex2="example1 - source_Nickel-1.STL_v65" vertex3="example1 - source_Nickel-1.STL_v18"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v18" vertex2="example1 - source_Nickel-1.STL_v65" vertex3="example1 - source_Nickel-1.STL_v66"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v18" vertex2="example1 - source_Nickel-1.STL_v66" vertex3="example1 - source_Nickel-1.STL_v19"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v19" vertex2="example1 - source_Nickel-1.STL_v66" vertex3="example1 - source_Nickel-1.STL_v67"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v19" vertex2="example1 - source_Nickel-1.STL_v67" vertex3="example1 - source_Nickel-1.STL_v20"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v20" vertex2="example1 - source_Nickel-1.STL_v67" vertex3="example1 - source_Nickel-1.STL_v68"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v20" vertex2="example1 - source_Nickel-1.STL_v68" vertex3="example1 - source_Nickel-1.STL_v21"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v21" vertex2="example1 - source_Nickel-1.STL_v68" vertex3="example1 - source_Nickel-1.STL_v69"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v21" vertex2="example1 - source_Nickel-1.STL_v69" vertex3="example1 - source_Nickel-1.STL_v26"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v26" vertex2="example1 - source_Nickel-1.STL_v69" vertex3="example1 - source_Nickel-1.STL_v70"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v26" vertex2="example1 - source_Nickel-1.STL_v70" vertex3="example1 - source_Nickel-1.STL_v27"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v27" vertex2="example1 - source_Nickel-1.STL_v70" vertex3="example1 - source_Nickel-1.STL_v71"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v27" vertex2="example1 - source_Nickel-1.STL_v71" vertex3="example1 - source_Nickel-1.STL_v28"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v28" vertex2="example1 - source_Nickel-1.STL_v71" vertex3="example1 - source_Nickel-1.STL_v72"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v28" vertex2="example1 - source_Nickel-1.STL_v72" vertex3="example1 - source_Nickel-1.STL_v25"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v25" vertex2="example1 - source_Nickel-1.STL_v72" vertex3="example1 - source_Nickel-1.STL_v73"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v25" vertex2="example1 - source_Nickel-1.STL_v73" vertex3="example1 - source_Nickel-1.STL_v11"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v11" vertex2="example1 - source_Nickel-1.STL_v73" vertex3="example1 - source_Nickel-1.STL_v74"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v11" vertex2="example1 - source_Nickel-1.STL_v74" vertex3="example1 - source_Nickel-1.STL_v12"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v12" vertex2="example1 - source_Nickel-1.STL_v74" vertex3="example1 - source_Nickel-1.STL_v75"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v12" vertex2="example1 - source_Nickel-1.STL_v75" vertex3="example1 - source_Nickel-1.STL_v29"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v29" vertex2="example1 - source_Nickel-1.STL_v75" vertex3="example1 - source_Nickel-1.STL_v76"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v29" vertex2="example1 - source_Nickel-1.STL_v76" vertex3="example1 - source_Nickel-1.STL_v30"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v30" vertex2="example1 - source_Nickel-1.STL_v76" vertex3="example1 - source_Nickel-1.STL_v77"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v30" vertex2="example1 - source_Nickel-1.STL_v77" vertex3="example1 - source_Nickel-1.STL_v31"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v31" vertex2="example1 - source_Nickel-1.STL_v77" vertex3="example1 - source_Nickel-1.STL_v78"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v31" vertex2="example1 - source_Nickel-1.STL_v78" vertex3="example1 - source_Nickel-1.STL_v32"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v32" vertex2="example1 - source_Nickel-1.STL_v78" vertex3="example1 - source_Nickel-1.STL_v79"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v32" vertex2="example1 - source_Nickel-1.STL_v79" vertex3="example1 - source_Nickel-1.STL_v33"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v33" vertex2="example1 - source_Nickel-1.STL_v79" vertex3="example1 - source_Nickel-1.STL_v44"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v81" vertex3="example1 - source_Nickel-1.STL_v82"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v82" vertex2="example1 - source_Nickel-1.STL_v81" vertex3="example1 - source_Nickel-1.STL_v83"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v80" vertex3="example1 - source_Nickel-1.STL_v85"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v85" vertex2="example1 - source_Nickel-1.STL_v80" vertex3="example1 - source_Nickel-1.STL_v82"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v84" vertex3="example1 - source_Nickel-1.STL_v87"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v87" vertex2="example1 - source_Nickel-1.STL_v84" vertex3="example1 - source_Nickel-1.STL_v85"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v86" vertex3="example1 - source_Nickel-1.STL_v83"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v83" vertex2="example1 - source_Nickel-1.STL_v86" vertex3="example1 - source_Nickel-1.STL_v87"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v79" vertex2="example1 - source_Nickel-1.STL_v78" vertex3="example1 - source_Nickel-1.STL_v80"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v75" vertex3="example1 - source_Nickel-1.STL_v74"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v70" vertex2="example1 - source_Nickel-1.STL_v69" vertex3="example1 - source_Nickel-1.STL_v81"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v69" vertex3="example1 - source_Nickel-1.STL_v68"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v78" vertex2="example1 - source_Nickel-1.STL_v77" vertex3="example1 - source_Nickel-1.STL_v80"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v77" vertex3="example1 - source_Nickel-1.STL_v76"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v76" vertex3="example1 - source_Nickel-1.STL_v75"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v68" vertex2="example1 - source_Nickel-1.STL_v67" vertex3="example1 - source_Nickel-1.STL_v81"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v67" vertex3="example1 - source_Nickel-1.STL_v66"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v66" vertex3="example1 - source_Nickel-1.STL_v65"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v58" vertex2="example1 - source_Nickel-1.STL_v57" vertex3="example1 - source_Nickel-1.STL_v86"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v57" vertex3="example1 - source_Nickel-1.STL_v56"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v74" vertex2="example1 - source_Nickel-1.STL_v73" vertex3="example1 - source_Nickel-1.STL_v80"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v73" vertex3="example1 - source_Nickel-1.STL_v72"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v72" vertex3="example1 - source_Nickel-1.STL_v81"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v72" vertex3="example1 - source_Nickel-1.STL_v71"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v71" vertex3="example1 - source_Nickel-1.STL_v70"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v52" vertex2="example1 - source_Nickel-1.STL_v51" vertex3="example1 - source_Nickel-1.STL_v84"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v56" vertex2="example1 - source_Nickel-1.STL_v55" vertex3="example1 - source_Nickel-1.STL_v86"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v55" vertex3="example1 - source_Nickel-1.STL_v54"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v54" vertex3="example1 - source_Nickel-1.STL_v84"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v54" vertex3="example1 - source_Nickel-1.STL_v53"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v53" vertex3="example1 - source_Nickel-1.STL_v52"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v45" vertex3="example1 - source_Nickel-1.STL_v80"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v45" vertex3="example1 - source_Nickel-1.STL_v44"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v80" vertex2="example1 - source_Nickel-1.STL_v44" vertex3="example1 - source_Nickel-1.STL_v79"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v65" vertex2="example1 - source_Nickel-1.STL_v64" vertex3="example1 - source_Nickel-1.STL_v81"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v64" vertex3="example1 - source_Nickel-1.STL_v63"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v81" vertex2="example1 - source_Nickel-1.STL_v63" vertex3="example1 - source_Nickel-1.STL_v86"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v63" vertex3="example1 - source_Nickel-1.STL_v62"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v62" vertex3="example1 - source_Nickel-1.STL_v61"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v61" vertex2="example1 - source_Nickel-1.STL_v60" vertex3="example1 - source_Nickel-1.STL_v86"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v60" vertex3="example1 - source_Nickel-1.STL_v59"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v86" vertex2="example1 - source_Nickel-1.STL_v59" vertex3="example1 - source_Nickel-1.STL_v58"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v51" vertex2="example1 - source_Nickel-1.STL_v50" vertex3="example1 - source_Nickel-1.STL_v84"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v50" vertex3="example1 - source_Nickel-1.STL_v49"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v49" vertex3="example1 - source_Nickel-1.STL_v48"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v48" vertex2="example1 - source_Nickel-1.STL_v47" vertex3="example1 - source_Nickel-1.STL_v84"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v47" vertex3="example1 - source_Nickel-1.STL_v46"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v84" vertex2="example1 - source_Nickel-1.STL_v46" vertex3="example1 - source_Nickel-1.STL_v45"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v87" vertex2="example1 - source_Nickel-1.STL_v85" vertex3="example1 - source_Nickel-1.STL_v83"/>
+             <triangular vertex1="example1 - source_Nickel-1.STL_v83" vertex2="example1 - source_Nickel-1.STL_v85" vertex3="example1 - source_Nickel-1.STL_v82"/>
+        </tessellated>
+    </solids>
+
+    <structure>
+        <volume name="example1 - source_Nickel-1.STL">
+            <materialref ref="Nickel"/>
+            <solidref ref="example1 - source_Nickel-1.STL-SOL"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="example1 - source_Nickel-1.STL"/>
+    </setup>
+</gdml>

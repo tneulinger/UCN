@@ -35,6 +35,7 @@
 #include "G4PropagatorInField.hh"
 
 #include "UCNDetectorConstruction.hh"
+#include "UCNMaterialDataHelper.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -53,12 +54,49 @@ UCNDetectorConstruction::~UCNDetectorConstruction()
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
-
+// Relies on GDML files populating materials table with basic materials information.
+// Loops through all materials and applies UCN materials properties, listed in
+// materials/ directory in text files. See UCNMaterialDataHelper.
 void UCNDetectorConstruction::DefineMaterials()
 {
-  #include "UCNDetectorMaterials.icc"
+  // Get handle to materials table
+  G4MaterialTable* mt = (G4Material::GetMaterialTable());
+  // Get the number of materials in the materials table
+  G4int numOfMaterials = G4Material::GetNumberOfMaterials();
+
+  // Apply UCN materials properties to materials
+  G4String matName;
+  G4String matFileName;
+  G4Material* theMat;
+  UCNMaterialDataHelper* mdh;
+  G4UCNMaterialPropertiesTable* mpt;
+  for (G4int matNum = 0; matNum < numOfMaterials; matNum++)
+  {
+    // Get the material name from the material table
+    matName = mt[0][matNum]->GetName();
+    // Get the file name in the materials/ directory
+    matFileName = "../materials/" + matName + ".txt";
+    // Import the UCN materials properties
+    mdh = new UCNMaterialDataHelper(matFileName);
+    // Add the UCN properties to a properties table
+    mpt = new G4UCNMaterialPropertiesTable();
+    mpt->AddConstProperty("DIFFUSION", mdh->GetDiffusion());
+    mpt->AddConstProperty("FERMIPOT",  mdh->GetFermiPot());
+    mpt->AddConstProperty("SPINFLIP",  mdh->GetSpinFlip());
+    mpt->AddConstProperty("LOSS",      mdh->GetLoss());
+    mpt->AddConstProperty("LOSSCS",    mdh->GetLossCS());
+    mpt->AddConstProperty("ABSCS",     mdh->GetAbsCS());
+    mpt->AddConstProperty("SCATCS",    mdh->GetScatCS());
+    // Get the handle to the material
+    theMat = G4Material::GetMaterial(matName);
+    // Apply the UCN properties to this material
+    theMat->SetMaterialPropertiesTable(mpt);
+  }
 
   // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+
+  // OLD
+  // #include "UCNDetectorMaterials.icc"
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -66,29 +104,8 @@ void UCNDetectorConstruction::DefineMaterials()
 G4VPhysicalVolume* UCNDetectorConstruction::Construct()
 {
 
-  // set world material to vacuum
+  // get handle to world logical volume
   G4LogicalVolume* worldLogVol  = fWorldPhysVol->GetLogicalVolume();
-  worldLogVol->SetMaterial( (G4Material::GetMaterial("G4_Galactic")) );
-  G4cout << "World name: " << worldLogVol->GetName() << G4endl;
-
-  // set all daughter materials to nickel
-  G4int numberOfDaughters = worldLogVol->GetNoDaughters();
-  G4cout << "Number of daughters to world: " << numberOfDaughters << G4endl;
-  G4VPhysicalVolume* daughterPhysVol;
-  G4LogicalVolume*   daughterLogVolume;
-  G4String           daughterName;
-  for (G4int daughterIndex = 0; daughterIndex < numberOfDaughters; daughterIndex++)
-  {
-    daughterPhysVol   = worldLogVol->GetDaughter(daughterIndex);
-    daughterLogVolume = daughterPhysVol->GetLogicalVolume();
-    daughterName      = daughterLogVolume->GetName();
-
-    // G4cerr << "Daughter name: "     << daughterName << G4endl;
-    // G4cerr << "Old daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
-    daughterLogVolume->SetMaterial( (G4Material::GetMaterial("Nickel")) );
-    // G4cerr << "New daughter material: " << daughterLogVolume->GetMaterial() << G4endl;
-  }
-
 
   // ========== USER LIMITS ==========
   G4double maxStep = 0.5*mm;
@@ -98,19 +115,19 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
   worldLogVol->SetUserLimits(stepLimit);
   // =================================
 
-  //-visualization
+  // ========== VISUALIZATION ==========
+  worldLogVol-> SetVisAttributes(G4VisAttributes::Invisible);
+
   // G4VisAttributes* Red        = new G4VisAttributes( G4Colour(255/255. ,0/255.   ,0/255.   ));
   // G4VisAttributes* Yellow     = new G4VisAttributes( G4Colour(255/255. ,255/255. ,0/255.   ));
   // G4VisAttributes* LightBlue  = new G4VisAttributes( G4Colour(0/255.   ,204/255. ,204/255. ));
   // G4VisAttributes* LightGreen = new G4VisAttributes( G4Colour(153/255. ,255/255. ,153/255. ));
   // G4VisAttributes* White      = new G4VisAttributes( G4Colour(255/255. ,355/255. ,255/255. ));
 
-  fWorldPhysVol->GetLogicalVolume()-> SetVisAttributes(G4VisAttributes::Invisible);
-
   // G4LogicalVolumeStore* MyGDML = G4LogicalVolumeStore::GetInstance();
-  // MyGDML->GetVolume("example1")->SetVisAttributes(LightGreen);
-  // MyGDML->GetVolume("example2")->SetVisAttributes(LightGreen);
-  // MyGDML->GetVolume("example3")->SetVisAttributes(LightGreen);
+  // MyGDML->GetVolume("thing1")->SetVisAttributes(LightGreen);
+  // MyGDML->GetVolume("thing2")->SetVisAttributes(LightGreen);
+
   return fWorldPhysVol;
 }
 

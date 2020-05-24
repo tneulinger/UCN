@@ -25,30 +25,55 @@ MATERIALS_INFO = '''
 
 #@
 #@  So far, following materials are implemented:
-#@       - Dummy_Vacuum
-#@       - Dummy_Nickel
+#@       - DPE
+#@       - Nickel
+#@       - Vacuum
 
 '''
 
 MATERIALS_LIST = [
-	{"name" : "Dummy_Vacuum",       "group" : "Other"},
-    {"name" : "Dummy_Nickel",       "group" : "Other"},
+    {"name" : "DPE",       "group" : "Other"},
+	{"name" : "Nickel",    "group" : "Other"},
+    {"name" : "Vacuum",    "group" : "Other"},
 ]
 
 MATERIALS = '''
     <materials>
 
-        <element name="dummy" formula="DUMMY" Z="1"> <atom value="1."/> </element>
+        <!-- ISOTOPES -->
+        <isotope name="H2" Z="1"  N="2"> <atom unit="g/mole" value="2.0141"/> </isotope>
+        <!-- ISOTOPES -->
 
-        <material name="Dummy_Vacuum" state="solid">
-            <D value="1.00" unit="g/cm3"/>
-            <fraction n="1." ref="dummy"/>
-         </material>
+        <!-- ELEMENTS -->
+        <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
+        <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
+        <element name="carbon"    formula="C" Z="6"> <atom value="12.011"/> </element>
+        <element name="nickel"    formula="Ni"  Z="28">   <atom value="58.6934"/>  </element>
+        <!-- ELEMENTS -->
 
-         <material name="Dummy_Nickel" state="solid">
-            <D value="1.00" unit="g/cm3"/>
-            <fraction n="1." ref="dummy"/>
-         </material>
+        <!-- MATERIALS -->
+        <!-- DPE -->
+        <material name="DPE" formula="D2C">
+            <D value="0.92" unit="g/cm3"/>
+            <composite n="2" ref="deuterium"/>
+            <composite n="1" ref="carbon"/>
+        </material>
+        <!-- NICKEL -->
+        <material name="Nickel" state="solid">
+           <D value="8.96" unit="g/cm3"/>
+           <fraction n="1." ref="nickel"/>
+        </material>
+        <!-- VACUUM -->
+        <material name="Vacuum">
+            <D value="1.e-25" unit="g/cm3" />
+            <fraction n="1.0" ref="videRef" />
+        </material>
+
+        <!-- MATERIALS -->
+
+
+
+
 
     </materials>
 '''
@@ -354,7 +379,7 @@ def creat_gdml_bundle(outname, infiles):
 		includes += '             </physvol>\n'
 
 	includes += "\n"
-	structure = STRUCTURE%(VOLUMENAME,"Dummy_Vacuum", SOLIDNMAE,includes)
+	structure = STRUCTURE%(VOLUMENAME,"Vacuum", SOLIDNMAE,includes)
 
 	# world
 	world = WORLD%VOLUMENAME
