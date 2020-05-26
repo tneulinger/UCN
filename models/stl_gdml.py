@@ -25,15 +25,25 @@ MATERIALS_INFO = '''
 
 #@
 #@  So far, following materials are implemented:
-#@       - DPE
-#@       - Nickel
-#@       - Vacuum
+#@       - "Copper": naturally-occuring copper
+#@       - "CYTOP": AGC Chemicals Company, see REFERENCES.
+#@       - "DLC": diamond-like carbon, 100% sp3
+#@       - "DPE": deuterated polyethylene
+#@       - "Fomblin": Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y
+#@       - "Nickel": naturally-occuring nickel
+#@       - "Steel": naturally-occuring iron
+#@       - "Vacuum"
 
 '''
 
 MATERIALS_LIST = [
+    {"name" : "Copper",    "group" : "Other"},
+    {"name" : "CYTOP",    "group" : "Other"},
+    {"name" : "DLC",       "group" : "Other"},
     {"name" : "DPE",       "group" : "Other"},
+    {"name" : "Fomblin",   "group" : "Other"},
 	{"name" : "Nickel",    "group" : "Other"},
+    {"name" : "Steel",     "group" : "Other"},
     {"name" : "Vacuum",    "group" : "Other"},
 ]
 
@@ -47,27 +57,70 @@ MATERIALS = '''
         <!-- ELEMENTS -->
         <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
         <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
-        <element name="carbon"    formula="C" Z="6"> <atom value="12.011"/> </element>
+        <element name="carbon"    formula="C"   Z="6"> <atom value="12.011"/> </element>
+        <element name="oxygen"    formula="O"   Z="8">    <atom value="15.999"/>   </element>
+        <element name="fluorine"  formula="F"   Z="9">    <atom value="15.999"/>   </element>
+        <element name="iron"      formula="Fe"  Z="26">   <atom value="55.8450"/>  </element>
         <element name="nickel"    formula="Ni"  Z="28">   <atom value="58.6934"/>  </element>
+        <element name="copper"    formula="Cu"  Z="29">   <atom value="63.55"/>    </element>
         <!-- ELEMENTS -->
 
         <!-- MATERIALS -->
+
+        <!-- CYTOP -->
+        <material name="CYTOP">
+            <D value="1.88" unit="g/cm3"/>
+            <composite n="6" ref="carbon"/>
+            <composite n="10" ref="fluorine"/>
+            <composite n="1" ref="oxygen"/>
+        </material>
+
+
+        <!-- COPPER -->
+        <material name="Copper" state="solid">
+           <D value="8.5" unit="g/cm3"/>
+           <fraction n="1." ref="copper"/>
+        </material>
+
+        <!-- DLC -->
+        <material name="DLC" state="solid">
+           <D value="3.51" unit="g/cm3"/>
+           <fraction n="1." ref="carbon"/>
+        </material>
+
         <!-- DPE -->
         <material name="DPE" formula="D2C">
             <D value="1.05" unit="g/cm3"/>
             <composite n="2" ref="deuterium"/>
             <composite n="1" ref="carbon"/>
         </material>
+
+        <!-- FOMBLIN Y LVAC 06/6 -->
+        <material name="Fomblin">
+            <D value="1.88" unit="g/cm3"/>
+            <composite n="30" ref="carbon"/>
+            <composite n="62" ref="fluorine"/>
+            <composite n="15" ref="oxygen"/>
+        </material>
+
         <!-- NICKEL -->
         <material name="Nickel" state="solid">
            <D value="8.96" unit="g/cm3"/>
            <fraction n="1." ref="nickel"/>
         </material>
+
+        <!-- STEEL -->
+        <material name="Steel" state="solid">
+           <D value="7.99" unit="g/cm3"/>
+           <fraction n="1." ref="iron"/>
+        </material>
+
         <!-- VACUUM -->
         <material name="Vacuum">
             <D value="1.e-25" unit="g/cm3" />
             <fraction n="1.0" ref="videRef" />
         </material>
+
         <!-- MATERIALS -->
 
     </materials>

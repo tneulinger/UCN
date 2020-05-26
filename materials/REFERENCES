@@ -1,12 +1,56 @@
+Copper:
+  * Fermi potential and loss from Golub Table 2.1.
+  * ! Bulk cross sections are wrong !
+
+
+CYTOP:
+  * See https://www.agc-chemicals.com/file.jsp?id=jp/en/fluorine/products/cytop/download/pdf/CYTOP_EN_Brochure.pdf.
+  * Basic unit:
+      |-CF2       CF2- |
+      |    \     /     |           Terminated on either end by...
+      |    CF-- CF     |           Type A: -COOH
+      |    /     \     |           Type M: -CONH ~ Si(OR)n
+      |   O      CF2   |           Type S: -CF3
+      |    \     /     |
+      |      CF2       |_n
+  * Ignoring terminations this is 6 C, 10 F, 1 O.
+  * Can't find density, so assume close to Fomblin (1.88 g/cm3), then one unit is N = 4.072e21 molecule/cm3.
+  * Scattering lengths are:
+  *   - C: 6.6 fm (Golub Table 2.1)
+  *   - F: 5.7 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
+  *   - O: 5.8 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
+  * Fermi potential is 2*pi*hbar^2/m (N(C)*a(C)+N(F)*a(F)+N(O)*a(0)) = 109 neV, similar to Fomblin obviously.
+  * Loss factor copied from Fomblin.
+  * ! Bulk cross sections wrong !
+
+
+DLC:
+  * Fermi potential = theoretical maximum for 100% sp3 content.
+  * Loss from https://doi.org/10.1016/j.physletb.2005.08.066
+  * ! Bulk cross sections wrong !
+
 DPE:
   * Density: Average PE density roughly 0.92 g/cm3. Replace H->D gives approximately
     density -> (mass DPE)/(mass PE)*density = (16/14)*0.92 = 1.05 g/cm3.
   * Fermi potential and loss: Appl. Phys. Lett. 107, 121604 (2015); https://doi.org/10.1063/1.4931388
-  * Bulk cross sections are wrong!
+  * ! Bulk cross sections are wrong !
+
+Fomblin:
+  * Fermi potential stated in Golub with reference to DJ Richardson thesis. Can't find it.
+  * Loss from https://doi.org/10.1016/0168-9002(91)90069-3.
+  * ! Bulk cross sections are wrong !
+  * There are many types of Fomblin:
+  *   One type is  "Fomblin Y LVAC 06/6", average mol wt 1800 (https://www.sigmaaldrich.com/catalog/product/aldrich/317926)
+  *   Has a long chemical formula: CF3O[CF(CF3)CF2O]x[CF2O]yCF3.
+  *   If we just assume x=y then we get x is about 7, so then there are about 30 C, 62 F, and 15 O.
 
 Nickel:
-  * Fermi potential and loss: Golub Table 2.1.
+  * Fermi potential and loss from Golub Table 2.1.
   * Bulk cross sections: Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.
 
+Steel:
+  * Values not correct. This is just iron. See Golub Table 2.1.
+  * ! Bulk cross sections are wrong !
+
 Vacuum:
-  *
+  * All values set to zero.

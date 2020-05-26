@@ -3,3 +3,6 @@ build/
 
 # ignore testing
 test/
+
+# ignore sun2 models
+models/sun2/
