@@ -1,5 +1,5 @@
-0.0        // DIFFUSION
-107.5      // FERMIPOT
+0.1        // DIFFUSION
+300.0      // FERMIPOT
 0.0        // SPINFLIP
 1.6e-5     // LOSS
 0.0        // LOSSCS

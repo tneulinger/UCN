@@ -14,7 +14,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 UCNPrimaryGeneratorAction::UCNPrimaryGeneratorAction(void) :
- gunPosition(0.000*mm,0.0*mm,0.000*mm), gunEnergy_neV(10.)
+ gunPosition(1.000*mm,1.000*mm,1.000*mm), gunEnergy_neV(200.)
 {
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);

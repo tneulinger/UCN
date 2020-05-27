@@ -2,7 +2,9 @@
 build/
 
 # ignore testing
-test/
+test/apply_materials_properties
+test/sun2_geometry_view
+test/snapshot/build
 
 # ignore sun2 models
 models/sun2/

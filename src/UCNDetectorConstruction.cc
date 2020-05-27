@@ -109,7 +109,7 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
 
   // ========== USER LIMITS ==========
   G4double maxStep = 0.5*mm;
-  G4double maxTime = 100.*s;
+  G4double maxTime = 200.*s;
   G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
   // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
   worldLogVol->SetUserLimits(stepLimit);
