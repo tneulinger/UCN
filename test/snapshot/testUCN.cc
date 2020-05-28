@@ -7,40 +7,60 @@
 #include "UCNSnapshot.hh"
 
 #include <fstream>
+#include <vector>
 
 int main()
 {
+  G4double time;
+  G4double energy;
+  G4ThreeVector position;
+  G4ThreeVector momentum;
 
+  // generate fake track times in nanoseconds
+  std::vector<G4double> trackTimes;
+  int N = 200;
+  for (int i=0; i<N; i++)
+  {
+    trackTimes.push_back( (i*0.5+0.1)*1e9);
+  }
+
+
+  // initialize the snapshot object
   G4String timesToSnapshotFile = "timesToSnapshot.txt";
-  G4String outputFile = "outputFile.txt";
-
+  G4String outputFile = "Snapshots.txt";
   UCNSnapshot* snapshot = new UCNSnapshot(timesToSnapshotFile, outputFile);
 
-  snapshot->PrintSnapshotTimes();
 
-  G4double time = 10.0*s;
+  // go through the track times and take snapshots
+  G4double theTimeNowInNanoSeconds;
+  G4bool shouldWe = false;
+  for (int i=0; i<N; i++)
+  {
+    theTimeNowInNanoSeconds = trackTimes[i];
 
-  G4double energy = 13.0*MeV;
+    shouldWe = snapshot->ShouldWeTakeASnapshotNow(theTimeNowInNanoSeconds);
 
-  G4ThreeVector position;
-  position[0] = 1.0*mm;
-  position[1] = 1.5*mm;
-  position[2] = 5.0*cm;
+    if (shouldWe)
+    {
+      time = theTimeNowInNanoSeconds*1e-9;
+      energy = time;
+      position[0] = time;
+      position[1] = time;
+      position[2] = time;
+      momentum[0] = time;
+      momentum[1] = time;
+      momentum[2] = time;
 
-  G4ThreeVector momentum;
-  momentum[0] = 14.0*MeV/c_light;
-  momentum[1] = 1.0*MeV/c_light;
-  momentum[2] = 4.0*MeV/c_light;
+      snapshot->SetTime(time);
+      snapshot->SetEnergy(energy);
+      snapshot->SetPosition(position);
+      snapshot->SetMomentum(momentum);
 
-  snapshot->SetTime(time);
-  snapshot->SetEnergy(energy);
-  snapshot->SetPosition(position);
-  snapshot->SetMomentum(momentum);
+      snapshot->WriteTimeEnergyPositionMomentum();
 
-  snapshot->WriteTimeEnergyPositionMomentum();
-  snapshot->WriteTimeEnergyPositionMomentum();
-  snapshot->WriteTimeEnergyPositionMomentum();
-  snapshot->WriteTimeEnergyPositionMomentum();
+    }
+
+  }
 
   delete snapshot;
 

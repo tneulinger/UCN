@@ -9,7 +9,7 @@
 UCNSnapshot::UCNSnapshot(G4String timesToSnapshotFile, G4String outputFile) :
 fTimesToSnapshotFile(timesToSnapshotFile),
 fOutputFile(outputFile),
-fSnapshotTimeIndex{0}
+fSnapshotIndex{0}
 {
   // get the snapshot times from file
   ImportSnapshotTimes();
@@ -90,7 +90,13 @@ G4bool UCNSnapshot::ShouldWeTakeASnapshotNow(G4double theTimeNowInNanoSeconds)
   G4double currentSnapshotTime = fTimesToSnapshot[fSnapshotIndex];
   G4bool   alreadyTookSnapshot = fSnapshotStatus[fSnapshotIndex];
 
-  // if we haven't already taken a snapshot now...
+  // if we already took a snapshot ...
+  if (alreadyTookSnapshot)
+  {
+    return false;
+  }
+
+  // if we haven't taken a snapshot ...
   if (!alreadyTookSnapshot)
   {
     // ...and if the time now is within the time window of the current time
@@ -98,10 +104,10 @@ G4bool UCNSnapshot::ShouldWeTakeASnapshotNow(G4double theTimeNowInNanoSeconds)
     {
       // ...then we should take a snapshot now.
       return true;
+    } else {
+      // ...otherwise the time is wrong.
+      return false;
     }
-  } else {
-    // otherwise we should not take a snapshot now.
-    return false;
   }
 
 }
@@ -117,5 +123,5 @@ void UCNSnapshot::WriteTimeEnergyPositionMomentum()
   fSnapshotStatus[fSnapshotIndex] = true;
 
   // move on to the next snapshot time
-  fSnapshotTimeIndex++;
+  fSnapshotIndex++;
 }
