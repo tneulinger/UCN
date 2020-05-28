@@ -41,6 +41,7 @@ target_link_libraries(UCN ${Geant4_LIBRARIES} )
 #
 set(UCN_SCRIPTS
     vis.mac
+    snapshots.in
   )
 
 foreach(_script ${UCN_SCRIPTS})

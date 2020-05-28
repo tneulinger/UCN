@@ -2,6 +2,7 @@
 
 #include "UCNAnalysis.hh"
 #include "UCNEventAction.hh"
+#include "UCNSnapshot.hh"
 #include "UCNSteppingAction.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -9,7 +10,9 @@
 UCNSteppingAction::UCNSteppingAction(UCNEventAction* eventAction) :
  G4UserSteppingAction(),
  fEventAction(eventAction)
-{}
+{
+  fSnapshot = fEventAction->GetSnapshotPointer();
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -20,6 +23,35 @@ UCNSteppingAction::~UCNSteppingAction()
 
 void UCNSteppingAction::UserSteppingAction(const G4Step* step)
 {
+
+  // what is the time now?
+  G4StepPoint* postStepPoint = step->GetPostStepPoint();
+  G4double theTimeNowInNanoSeconds = postStepPoint->GetGlobalTime();
+
+  // should we take a snapshot here?
+  G4bool shouldWe = false;
+  shouldWe = fSnapshot->ShouldWeTakeASnapshotNow(theTimeNowInNanoSeconds);
+
+  // if so, write the snapshot to file
+  G4double time;
+  G4double energy;
+  G4ThreeVector position;
+  G4ThreeVector momentum;
+  if (shouldWe)
+  {
+    time = theTimeNowInNanoSeconds*1e-9;
+    energy = postStepPoint->GetKineticEnergy();
+    position = postStepPoint->GetPosition();
+    momentum = postStepPoint->GetMomentum();
+
+    fSnapshot->SetTime(time);
+    fSnapshot->SetEnergy(energy);
+    fSnapshot->SetPosition(position);
+    fSnapshot->SetMomentum(momentum);
+
+    fSnapshot->WriteTimeEnergyPositionMomentum();
+
+  }
 
   // ===== POSITION BINNING AT TIME =====
   // // (what time are we interested in?)

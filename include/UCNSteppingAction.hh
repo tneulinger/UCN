@@ -5,6 +5,7 @@
 #include "G4Step.hh"
 
 class UCNEventAction;
+class UCNSnapshot;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -19,6 +20,7 @@ class UCNSteppingAction : public G4UserSteppingAction
 
   private:
     UCNEventAction* fEventAction;
+    UCNSnapshot*    fSnapshot;
 
 };
 

@@ -6,28 +6,38 @@
 #include "UCNAnalysis.hh"
 #include "UCNEventAction.hh"
 #include "UCNRunAction.hh"
+#include "UCNSnapshot.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-UCNEventAction::UCNEventAction() : G4UserEventAction(),
-  fHaveBinnedIt(false)
-{}
+UCNEventAction::UCNEventAction() : G4UserEventAction()
+{
+  // create snapshot object for the run
+  G4String timesToSnapshotFile = "snapshots.in";
+  G4String outputFile = "snapshots.out";
+  fSnapshot = new UCNSnapshot(timesToSnapshotFile, outputFile);
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 UCNEventAction::~UCNEventAction()
-{}
+{
+  // delete snapshot object
+  delete fSnapshot;
+}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void UCNEventAction::BeginOfEventAction(const G4Event*)
 {
-  fHaveBinnedIt = false;
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void UCNEventAction::EndOfEventAction(const G4Event*)
 {
-  fHaveBinnedIt = false;
+  fSnapshot->FlushOutputStream();   // flush data to file so we can see it
+  fSnapshot->ResetSnapshotIndex();  // reset index
+  fSnapshot->ResetSnapshotStatus(); // reset flags
 }

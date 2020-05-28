@@ -1,8 +1,11 @@
 #ifndef UCNTrackingAction_hh
 #define UCNTrackingAction_hh
 
+#include "G4ThreeVector.hh"
 #include "G4UserTrackingAction.hh"
 #include "globals.hh"
+
+
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -18,7 +21,10 @@ class UCNTrackingAction : public G4UserTrackingAction {
     void PrintTimeAlive();
 
   private:
-    G4double fTime_birth,  fTime_end, fTimeAlive;
+    G4double      fTimeOfBirth;
+    G4double      fTimeOfDeath;
+    G4ThreeVector fPlaceOfBirth;
+    G4ThreeVector fPlaceOfDeath;
 
 };
 

@@ -1,34 +1,59 @@
 Usage overview:
   1. Create CAD model of system to be simulated.
   2. Convert CAD model files to GDML.
-  3. Run application for this system.
+  3. Run application.
   (See tutorial section below for examples.)
 
-UI commands:
-1) Set UCN initial KE in neV, e.g. "/gun/gunEnergy_neV 10".
-1) Set UCN initial position in mm, e.g. "/gun/gunPosition 100.0 230.0 10.0 mm".
+UI macro commands:
+1) Set UCN initial KE in neV, e.g. "/gun/gunEnergy_neV 10". (Default = 10)
+1) Set UCN initial position in mm, e.g. "/gun/gunPosition 100.0 230.0 10.0 mm". (Default = 1,1,1mm)
 
-dev:
-1) "Alive time": (Currently commented out.)
-  Calculate time that UCN was in simulation. In UCNTrackingAction, get time of
-  "birth" in PreUserTrackingAction. Get time of "death" in
-  PostUserTrackingAction. Output difference in seconds to a file.
+Inputs:
+1) "snapshots.in":
+  Text file listing times ("tA_i") at which to take "snapshots". The snapshot is
+  a list of the UCN time, energy, position, and momentum and time "tB_i" where
+  "tB_i" is within some time window ("dt") after "tA_i". The file format is as
+  follows:
+    line 1: dt
+    line 2: tA_1
+    line 3: tA_2
+    ...
+    line N: tA_{N-1}
 
-2) Y-position binning at given time: (Currently commented out.)
-  Generate histogram of y-positions of UCNs at given time within some time
-  window. In UCNSteppingAction, under UserSteppingAction put in time of interest
-  and time window. Then along each step, check to see what time it is, and if it
-  is the time of interest (within the desire time window), get the position and
-  fill the histogram. Geant4 propagates UCNs along steps of some maximum length,
-  so make sure that the step size is small enough in (under maxStep in
-  UCNDetectorConstruction Construct method). To avoid counting the UCN more than
-  once, there is a boolean flag in UCNEventAction (fHaveBinnedIt). At the
-  beginning of each event, this is set to false. Once the UCN has been binned,
-  it is set to true. Then at the end of the event it is reset to false. The
-  histogram is initialized in UCNRunAction BeginOfRunAction and written to and
-  closed in EndOfRunAction.
+Outputs:
+1) "snapshots.out":
+  Text file listing the snapshots. The file format is as follows:
+    line 1:   tB_1, KE(tB_1), (x,y,z)@(tB_1), (px,py,pz)@(tB_1)
+    line 2:   tB_2, KE(tB_1), (x,y,z)@(tB_2), (px,py,pz)@(tB_2)
+    ...
+    line j:   tB_j, KE(tB_j), (x,y,z)@(tB_j), (px,py,pz)@(tB_j)
+    line j+1: tB_1, KE(tB_1), (x,y,z)@(tB_1), (px,py,pz)@(tB_1)
+    line j+2: tB_2, KE(tB_1), (x,y,z)@(tB_2), (px,py,pz)@(tB_2)
+    ...
+  Line "j" may or may not be N-1 depending on if the UCN lasts that long. The
+  next lines will be for subsequent UCNs. The total number depends on the number
+  of runs.
+
+2) "alive.out":
+  Text file listing the time that the UCN was "alive", i.e. how long it existed
+  in the simulation. The first entry is the alive time in seconds. The second
+  entry (vector) is the position where the UCN was created. The last entry
+  (vector) is the position where the UCN was destroyed.
+
+================================= Materials ====================================
 
 UCN Materials:
+
+  Currently-implemented materials (See REFERENCES):
+    - "Copper":  naturally-occuring copper
+    - "CYTOP":   AGC Chemicals Company polyfluoromer
+    - "DLC":     diamond-like carbon, 100% sp3
+    - "DPE":     deuterated polyethylene
+    - "Fomblin": Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y, polyfluoromer
+    - "Nickel":  naturally-occuring nickel
+    - "Steel":   naturally-occuring iron
+    - "Vacuum":  interstellar density hydrogen
+
   UCN material properties are stored in text files in the materials/ directory.
   Basic material properties (density, composition, etc.) are listed under
   MATERIALS in stl_gdml.py in the GDML XML format.
@@ -44,11 +69,6 @@ UCN Materials:
   "ABSCS"     = absorption cross section in barns (preferred)
   "SCATCS"    = total scattering cross section in barns
 
-  Currently-implemented materials:
-  1. "DPE": deuterated polyethylene)
-  2. "Nickel": naturally-occuring nickel)
-  3. "Vacuum": low-density hydrogen.
-
 
 ================================= Tutorial =====================================
 
@@ -59,7 +79,7 @@ $ mkdir build
 $ cd build
 $ cmake ../
 $ make
-$ cp ../models/example/*.gdml ./
+$ cp ../models/example1/*.gdml ./
 $ ./UCN example1.gdml
 
 User geometry:
@@ -70,7 +90,7 @@ User geometry:
     $ mkdir mySimulation
     $ cd mySimulation
     $ cp all/your/STL/files ./
-    $ python ../stl_gdml.py mySimulation ./*.STL
+    $ python ../../stl_gdml.py mySimulation ./*.STL
     This will produce a mySimulation.gdml file in addition to .gdml files for all
     your model parts.
   3. Run the application. In build/ directory...
