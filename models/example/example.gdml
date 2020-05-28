@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <materials>
+
+        <!-- ISOTOPES -->
+        <isotope name="H2" Z="1"  N="2"> <atom unit="g/mole" value="2.0141"/> </isotope>
+        <!-- ISOTOPES -->
+
+        <!-- ELEMENTS -->
+        <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
+        <element name="deteRef"   formula="DETECTOR" Z="1"> <atom value="1."/> </element>
+        <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
+        <element name="carbon"    formula="C"   Z="6"> <atom value="12.011"/> </element>
+        <element name="oxygen"    formula="O"   Z="8">    <atom value="15.999"/>   </element>
+        <element name="fluorine"  formula="F"   Z="9">    <atom value="15.999"/>   </element>
+        <element name="iron"      formula="Fe"  Z="26">   <atom value="55.8450"/>  </element>
+        <element name="nickel"    formula="Ni"  Z="28">   <atom value="58.6934"/>  </element>
+        <element name="copper"    formula="Cu"  Z="29">   <atom value="63.55"/>    </element>
+        <!-- ELEMENTS -->
+
+        <!-- MATERIALS -->
+
+        <!-- CYTOP -->
+        <material name="CYTOP">
+            <D value="1.88" unit="g/cm3"/>
+            <composite n="6" ref="carbon"/>
+            <composite n="10" ref="fluorine"/>
+            <composite n="1" ref="oxygen"/>
+        </material>
+
+
+        <!-- COPPER -->
+        <material name="Copper" state="solid">
+           <D value="8.5" unit="g/cm3"/>
+           <fraction n="1." ref="copper"/>
+        </material>
+
+        <!-- DETECTOR -->
+        <material name="Detector">
+            <D value="1000.0" unit="g/cm3" />
+            <fraction n="1.0" ref="deteRef" />
+        </material>
+
+        <!-- DLC -->
+        <material name="DLC" state="solid">
+           <D value="3.51" unit="g/cm3"/>
+           <fraction n="1." ref="carbon"/>
+        </material>
+
+        <!-- DPE -->
+        <material name="DPE" formula="D2C">
+            <D value="1.05" unit="g/cm3"/>
+            <composite n="2" ref="deuterium"/>
+            <composite n="1" ref="carbon"/>
+        </material>
+
+        <!-- FOMBLIN Y LVAC 06/6 -->
+        <material name="Fomblin">
+            <D value="1.88" unit="g/cm3"/>
+            <composite n="30" ref="carbon"/>
+            <composite n="62" ref="fluorine"/>
+            <composite n="15" ref="oxygen"/>
+        </material>
+
+        <!-- NICKEL -->
+        <material name="Nickel" state="solid">
+           <D value="8.96" unit="g/cm3"/>
+           <fraction n="1." ref="nickel"/>
+        </material>
+
+        <!-- STEEL -->
+        <material name="Steel" state="solid">
+           <D value="7.99" unit="g/cm3"/>
+           <fraction n="1." ref="iron"/>
+        </material>
+
+        <!-- VACUUM -->
+        <material name="Vacuum">
+            <D value="1.e-25" unit="g/cm3" />
+            <fraction n="1.0" ref="videRef" />
+        </material>
+
+        <!-- MATERIALS -->
+
+    </materials>
+
+    <solids>
+        <box lunit="mm" name="world_solid" x="10000.0" y="10000.0" z="10000.0" />
+    </solids>
+
+    <structure>
+        <volume name="world_volume">
+            <materialref ref="Vacuum"/>
+            <solidref ref="world_solid"/>
+
+            <physvol>
+                <file name="example - pipe_Nickel-1.STL.gdml"/>
+             </physvol>
+            <physvol>
+                <file name="example - source_DLC-1.STL.gdml"/>
+             </physvol>
+            <physvol>
+                <file name="example - stop_Detector-1.STL.gdml"/>
+             </physvol>
+
+
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="world_volume"/>
+    </setup>
+</gdml>

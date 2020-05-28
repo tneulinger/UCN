@@ -7,6 +7,8 @@
 #include "G4VisAttributes.hh"
 
 #include <iomanip>
+#include <fstream>
+std::ofstream detectorFile("detector.out");
 
 G4ThreadLocal G4Allocator<UCNTrackerHit>* UCNTrackerHitAllocator=0;
 
@@ -14,9 +16,7 @@ G4ThreadLocal G4Allocator<UCNTrackerHit>* UCNTrackerHitAllocator=0;
 
 UCNTrackerHit::UCNTrackerHit()
  : G4VHit(),
-   fTrackID(-1),
-   fChamberNb(-1),
-   fEdep(0.),
+   fTime(0.),
    fPos(G4ThreeVector())
 {}
 
@@ -29,9 +29,7 @@ UCNTrackerHit::~UCNTrackerHit() {}
 UCNTrackerHit::UCNTrackerHit(const UCNTrackerHit& right)
   : G4VHit()
 {
-  fTrackID   = right.fTrackID;
-  fChamberNb = right.fChamberNb;
-  fEdep      = right.fEdep;
+  fTime      = right.fTime;
   fPos       = right.fPos;
 }
 
@@ -39,9 +37,7 @@ UCNTrackerHit::UCNTrackerHit(const UCNTrackerHit& right)
 
 const UCNTrackerHit& UCNTrackerHit::operator=(const UCNTrackerHit& right)
 {
-  fTrackID   = right.fTrackID;
-  fChamberNb = right.fChamberNb;
-  fEdep      = right.fEdep;
+  fTime      = right.fTime;
   fPos       = right.fPos;
 
   return *this;
@@ -75,13 +71,17 @@ void UCNTrackerHit::Draw()
 
 void UCNTrackerHit::Print()
 {
-  G4cout
-     << "  trackID: " << fTrackID << " chamberNb: " << fChamberNb
-     << "Edep: "
-     << std::setw(7) << G4BestUnit(fEdep,"Energy")
-     << " Position: "
-     << std::setw(7) << G4BestUnit( fPos,"Length")
-     << G4endl;
+
+  G4double timeInSeconds = fTime*1e-9;
+  detectorFile << timeInSeconds << ", " << fPos << std::endl;
+
+  //
+  // G4cout
+  //    << "Time: "
+  //    << std::setw(7) << G4BestUnit(fTime,"Time")
+  //    << " Position: "
+  //    << std::setw(7) << G4BestUnit( fPos,"Length")
+  //    << G4endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

@@ -1,9 +1,5 @@
-1. Make detector material to output hits.
-  * Use Sensitive Detector class.
-  * Need to filter for neutrons only
+1. Add config file with maxStep, maxTime, etc.
 
-2. Redo included example to fix coordinates. Add detector.
+2. Add macro command for setting momentum direction.
 
-3. Add config file with maxStep, maxTime, etc.
-
-4. Add macro command for setting momentum direction.
+3. Fix cross sections

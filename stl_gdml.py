@@ -87,7 +87,7 @@ MATERIALS = '''
 
         <!-- DETECTOR -->
         <material name="Detector">
-            <D value="1.e-25" unit="g/cm3" />
+            <D value="1000.0" unit="g/cm3" />
             <fraction n="1.0" ref="deteRef" />
         </material>
 

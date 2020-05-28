@@ -37,6 +37,7 @@
 #include "UCNDetectorConstruction.hh"
 #include "UCNMaterialDataHelper.hh"
 #include "UCNTrackerSD.hh"
+#include "G4SDManager.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -139,6 +140,8 @@ G4ThreadLocal G4UniformGravityField* UCNDetectorConstruction::fField = 0;
 void UCNDetectorConstruction::ConstructSDandField()
 {
 
+  // example - stop_Detector-1.STL
+
   // register the detectors, do this by searching for all logical volumes which
   // have the "Detector" material applied to them and registering these as
   // sensitive detectors
@@ -161,6 +164,7 @@ void UCNDetectorConstruction::ConstructSDandField()
     if (daughterMatName == "Detector")
     {
       daughterLogVolName = daughterLogVol->GetName();
+      G4cerr << "DAUGHTER NAME IS ====== " << daughterLogVolName << G4endl;
       SetSensitiveDetector(daughterLogVolName, aTrackerSD, true);
     }
   }

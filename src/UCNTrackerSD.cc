@@ -1,6 +1,7 @@
 #include "UCNTrackerSD.hh"
 #include "G4HCofThisEvent.hh"
 #include "G4Step.hh"
+#include "G4Track.hh"
 #include "G4ThreeVector.hh"
 #include "G4SDManager.hh"
 #include "G4ios.hh"
@@ -41,22 +42,19 @@ void UCNTrackerSD::Initialize(G4HCofThisEvent* hce)
 G4bool UCNTrackerSD::ProcessHits(G4Step* aStep,
                                      G4TouchableHistory*)
 {
-  // energy deposit
-  G4double edep = aStep->GetTotalEnergyDeposit();
-
-  if (edep==0.) return false;
+  // only count UCNs as hits
+  G4int trackID = aStep->GetTrack()->GetTrackID();
+  if (trackID != 1) return false;
 
   UCNTrackerHit* newHit = new UCNTrackerHit();
 
-  newHit->SetTrackID  (aStep->GetTrack()->GetTrackID());
-  newHit->SetChamberNb(aStep->GetPreStepPoint()->GetTouchableHandle()
-                                               ->GetCopyNumber());
-  newHit->SetEdep(edep);
-  newHit->SetPos (aStep->GetPostStepPoint()->GetPosition());
+  G4double time = aStep->GetTrack()->GetGlobalTime();
+  newHit->SetTime(time);
+  newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
 
   fHitsCollection->insert( newHit );
 
-  //newHit->Print();
+  newHit->Print();
 
   return true;
 }
