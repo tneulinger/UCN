@@ -35,9 +35,14 @@ void UCNEventAction::BeginOfEventAction(const G4Event*)
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void UCNEventAction::EndOfEventAction(const G4Event*)
+void UCNEventAction::EndOfEventAction(const G4Event* event)
 {
+  // reset snapshot
   fSnapshot->FlushOutputStream();   // flush data to file so we can see it
   fSnapshot->ResetSnapshotIndex();  // reset index
   fSnapshot->ResetSnapshotStatus(); // reset flags
+
+  // get information from hits collection 
+  G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);
+  G4cout << "    " << hc->GetSize() << " hits stored in this event" << G4endl;
 }

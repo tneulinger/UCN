@@ -26,7 +26,8 @@ MATERIALS_INFO = '''
 #@
 #@  So far, following materials are implemented:
 #@       - "Copper": naturally-occuring copper
-#@       - "CYTOP": AGC Chemicals Company, see REFERENCES.
+#@       - "CYTOP": AGC Chemicals Company, see REFERENCES
+#@       - "Detector": used to register UCN hits
 #@       - "DLC": diamond-like carbon, 100% sp3
 #@       - "DPE": deuterated polyethylene
 #@       - "Fomblin": Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y
@@ -38,7 +39,8 @@ MATERIALS_INFO = '''
 
 MATERIALS_LIST = [
     {"name" : "Copper",    "group" : "Other"},
-    {"name" : "CYTOP",    "group" : "Other"},
+    {"name" : "CYTOP",     "group" : "Other"},
+    {"name" : "Detector",  "group" : "Other"},
     {"name" : "DLC",       "group" : "Other"},
     {"name" : "DPE",       "group" : "Other"},
     {"name" : "Fomblin",   "group" : "Other"},
@@ -56,6 +58,7 @@ MATERIALS = '''
 
         <!-- ELEMENTS -->
         <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
+        <element name="deteRef"   formula="DETECTOR" Z="1"> <atom value="1."/> </element>
         <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
         <element name="carbon"    formula="C"   Z="6"> <atom value="12.011"/> </element>
         <element name="oxygen"    formula="O"   Z="8">    <atom value="15.999"/>   </element>
@@ -80,6 +83,12 @@ MATERIALS = '''
         <material name="Copper" state="solid">
            <D value="8.5" unit="g/cm3"/>
            <fraction n="1." ref="copper"/>
+        </material>
+
+        <!-- DETECTOR -->
+        <material name="Detector">
+            <D value="1.e-25" unit="g/cm3" />
+            <fraction n="1.0" ref="deteRef" />
         </material>
 
         <!-- DLC -->

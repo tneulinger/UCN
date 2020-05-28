@@ -36,6 +36,7 @@
 
 #include "UCNDetectorConstruction.hh"
 #include "UCNMaterialDataHelper.hh"
+#include "UCNTrackerSD.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -137,6 +138,36 @@ G4ThreadLocal G4UniformGravityField* UCNDetectorConstruction::fField = 0;
 
 void UCNDetectorConstruction::ConstructSDandField()
 {
+
+  // register the detectors, do this by searching for all logical volumes which
+  // have the "Detector" material applied to them and registering these as
+  // sensitive detectors
+  G4String detectorSDname  = "UCN/TrackerDetectorSD";
+  UCNTrackerSD* aTrackerSD = new UCNTrackerSD(detectorSDname,
+                                            "TrackerHitsCollection");
+  G4SDManager::GetSDMpointer()->AddNewDetector(aTrackerSD);
+  // find the logical volumes which have "Detector" material assigned to them
+  G4LogicalVolume* worldLogVol  = fWorldPhysVol->GetLogicalVolume();
+  G4int numberOfDaughters = worldLogVol->GetNoDaughters();
+  G4VPhysicalVolume* daughterPhysVol;
+  G4LogicalVolume*   daughterLogVol;
+  G4String           daughterMatName;
+  G4String           daughterLogVolName;
+  for (G4int i=0; i<numberOfDaughters; i++)
+  {
+    daughterPhysVol = worldLogVol->GetDaughter(i);
+    daughterLogVol  = daughterPhysVol->GetLogicalVolume();
+    daughterMatName = daughterLogVol->GetMaterial()->GetName();
+    if (daughterMatName == "Detector")
+    {
+      daughterLogVolName = daughterLogVol->GetName();
+      SetSensitiveDetector(daughterLogVolName, aTrackerSD, true);
+    }
+  }
+
+
+
+  // gravity field
   if (!fField) {
 
      fField = new G4UniformGravityField();
