@@ -117,7 +117,8 @@ G4bool UCNSnapshot::ShouldWeTakeASnapshotNow(G4double theTimeNowInNanoSeconds)
 void UCNSnapshot::WriteTimeEnergyPositionMomentum()
 {
   // write information to file
-  fOutStream << fTime << ", " << fEnergy << ", " << fPosition << ", " << fMomentum << "\n";
+  G4double EneV = fEnergy*1e6*1e9;
+  fOutStream << fTime << ", " << EneV << ", " << fPosition << ", " << fMomentum << "\n";
 
   // mark the status of this snapshot as taken
   fSnapshotStatus[fSnapshotIndex] = true;
