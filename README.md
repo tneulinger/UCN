@@ -81,20 +81,22 @@ Basic material properties (density, composition, etc.) are listed under
 MATERIALS in stl_gdml.py in the GDML XML format.
 
 UCN materials properties are split into two categories, boundary and bulk.
+
 **Boundary properties are:**
 - "DIFFUSION" = probability of diffuse reflection via Lambert model.
 - "FERMIPOT" = Fermi potential in neV
 - "SPINFLIP" = probability of a spin flip (not implemented)
 - "LOSS" = loss factor eta (or f) ratio of imaginary and real parts of Fermi potential (W/V)
+
 **Bulk properties are:**
 - "LOSSCS" = loss cross section in barns, doesn't take into account UCN velocity, set to zero if "ABSCS" is used
 - "ABSCS" = absorption cross section in barns (preferred)
 - "SCATCS" = total scattering cross section in barns
 
 
-### Tutorials
+## Tutorials
 
-#### Basic example:
+### Basic example:
   1. The basic example consists of a "source" box with a hole in it leading to
      pipe terminated by a detector.
   2. To build and run...
@@ -116,7 +118,7 @@ UCN materials properties are split into two categories, boundary and bulk.
   4. Run information is output to "snapshots.out", "alive.out", and
      "detector.out".
 
-#### User geometry:
+### User geometry:
   1. Save CAD model files of system as ".STL" of type ASCII. File names should
      include the desired material. For example "MyGizmo_Nickel.STL". See materials/
      directory for list of implemented materials and names.
@@ -129,11 +131,11 @@ UCN materials properties are split into two categories, boundary and bulk.
       $ python ../../stl_gdml.py mySimulation ./*.STL
       ```
   3. Run the application. In build/ directory...
-    ```  
-      $ cp ../models/mySimulation/*.gdml
-      $ ./UCN mySimulation.gdml
-    ```
+     ```  
+     $ cp ../models/mySimulation/*.gdml
+     $ ./UCN mySimulation.gdml
+     ```
 
-### Add new material:
+## Add new material:
   1. Update stl_gdml.py with desired material according to GDML XML format.
   2. Add "NewMaterial.txt" to materials/ directory with proper format.
