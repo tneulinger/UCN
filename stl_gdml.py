@@ -32,7 +32,7 @@ MATERIALS_INFO = '''
 #@       - "DPE": deuterated polyethylene
 #@       - "Fomblin": Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y
 #@       - "Nickel": naturally-occuring nickel
-#@       - "Steel": naturally-occuring iron
+#@       - "Steel": 316 stainless implemented in database
 #@       - "Vacuum"
 
 '''

@@ -1,9 +1,14 @@
-Copper:
+ISSUES: (see marked ! below)
+  * CYTOP: ignores terminations. Unknown density. Unknown loss factor.
+  * Unknown type of Fomblin used.
+  * Unknown type of steel used.
+
+
+Copper =========================================================================
   * Fermi potential and loss from Golub Table 2.1.
-  * ! Bulk cross sections are wrong !
+  * Bulk cross sections: Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.
 
-
-CYTOP:
+CYTOP (ignoring terminations) ==================================================
   * See https://www.agc-chemicals.com/file.jsp?id=jp/en/fluorine/products/cytop/download/pdf/CYTOP_EN_Brochure.pdf.
   * Basic unit:
       |-CF2       CF2- |
@@ -14,43 +19,90 @@ CYTOP:
       |    \     /     |
       |      CF2       |_n
   * Ignoring terminations this is 6 C, 10 F, 1 O.
-  * Can't find density, so assume close to Fomblin (1.88 g/cm3), then one unit is N = 4.072e21 molecule/cm3.
+  * ! Can't find density, so assume close to Fomblin (1.88 g/cm3), then one block is N = 4.072e21 unit/cm3.
   * Scattering lengths are:
-  *   - C: 6.6 fm (Golub Table 2.1)
-  *   - F: 5.7 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
-  *   - O: 5.8 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
-  * Fermi potential is 2*pi*hbar^2/m (N(C)*a(C)+N(F)*a(F)+N(O)*a(0)) = 109 neV, similar to Fomblin obviously.
+      - C: 6.6 fm (Golub Table 2.1)
+      - F: 5.7 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
+      - O: 5.8 fm (http://www.ati.ac.at/~neutropt/scattering/ScatteringLengthsAdvTable.pdf)
+  * Fermi potential is then  2*pi*hbar^2/m (N(C)*a(C)+N(F)*a(F)+N(O)*a(0)) = 109 neV.
   * Loss factor copied from Fomblin.
-  * ! Bulk cross sections wrong !
+  * Individual cross sections are (Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.):
+      - C: 5.551 scattering, 0.0035 absorption (barns)
+      - F: 4.018 scattering, 0.0096 absorption (barns)
+      - O: 4.232 scattering, 0.00019 absorption (barns)
+    Weighted average cross sections (per atom) are then:
+      - Scattering: 4.577 barns
+      - Absorption: 0.0069 barns
 
+Detector =======================================================================
+  * Parameters chosen to capture everything: fermi potential 0neV, loss 100%.
+  * Mass density set to 1000.0 g/cm3 of hydrogen, giving number density ~6e26/cm3.
+  * Both loss and absorption cross section set to 1000.0 barns.
+    - Scattering length is then ~100nm  (1/(density*sxs))
+    - Absorption mean free path ~0.25nm (1/(density*axs*2200/5))
 
-DLC:
+DLC ============================================================================
   * Fermi potential = theoretical maximum for 100% sp3 content.
   * Loss from https://doi.org/10.1016/j.physletb.2005.08.066
-  * ! Bulk cross sections wrong !
+  * Bulk cross sections: Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.
 
-DPE:
+DPE ============================================================================
   * Density: Average PE density roughly 0.92 g/cm3. Replace H->D gives approximately
     density -> (mass DPE)/(mass PE)*density = (16/14)*0.92 = 1.05 g/cm3.
   * Fermi potential and loss: Appl. Phys. Lett. 107, 121604 (2015); https://doi.org/10.1063/1.4931388
-  * ! Bulk cross sections are wrong !
+  * Individual cross sections are (Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.):
+      - C: 5.551 scattering, 0.0035 absorption (barns)
+      - D: 7.64 scattering,  0.000519  absorption (barns)
+    Weighted average cross sections (per atom) are then:
+      - Scattering: 6.94 barns
+      - Absorption: 0.0015 barns
 
-Fomblin:
+Fomblin ========================================================================
   * Fermi potential stated in Golub with reference to DJ Richardson thesis. Can't find it.
   * Loss from https://doi.org/10.1016/0168-9002(91)90069-3.
-  * ! Bulk cross sections are wrong !
   * There are many types of Fomblin:
   *   One type is  "Fomblin Y LVAC 06/6", average mol wt 1800 (https://www.sigmaaldrich.com/catalog/product/aldrich/317926)
   *   Has a long chemical formula: CF3O[CF(CF3)CF2O]x[CF2O]yCF3.
   *   If we just assume x=y then we get x is about 7, so then there are about 30 C, 62 F, and 15 O.
+  * Individual cross sections are (Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.):
+      - C: 5.551 scattering, 0.0035 absorption (barns)
+      - F: 4.018 scattering, 0.0096 absorption (barns)
+      - O: 4.232 scattering, 0.00019 absorption (barns)
+    Weighted average cross sections (per atom) are then:
+      - Scattering: 4.478 barns
+      - Absorption: 0.0066 barns
 
-Nickel:
+Nickel =========================================================================
   * Fermi potential and loss from Golub Table 2.1.
   * Bulk cross sections: Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.
 
-Steel:
-  * Values not correct. This is just iron. See Golub Table 2.1.
-  * ! Bulk cross sections are wrong !
+Steel (316) ====================================================================
+  * Fermi potential and loss from https://doi.org/10.1063/1.4770063
+  * 316 Steel is:
+    - 66.9975% iron
+    - 17%      chromium
+    - 12%      nickel
+    - 2.5%     molybdenum
+    - 1.0%     manganese
+    - 0.375%   silicon
+    - 0.05%    nitrogen
+    - 0.04%    carbon
+    - 0.0225%  phosphorus
+    - 0.015%   sulfur
+  * Individual cross sections are (Neutron News, Special Feature Vol. 3, No. 3, 1992, V. F. Sears.):
+      - Fe: 11.62 scattering, 2.56 absorption (barns)
+      - Cr: 3.49 scattering,  3.05 absorption (barns)
+      - Ni: 18.5 scattering,  4.49 absorption (barns)
+      - Mo: 5.71 scattering,  2.48 absorption (barns)
+      - Mn: 2.15 scattering,  13.3 absorption (barns)
+      - Si: 2.167 scattering, 0.171 absorption (barns)
+      - N:  11.51 scattering, 1.9 absorption (barns)
+      - C:  5.551 scattering, 0.0035 absorption (barns)
+      - P:  3.312 scattering, 0.172 absorption (barns)
+      - S:  1.026 scattering, 0.53 absorption (barns)
+    Weighted average cross sections (per atom) are then:
+      - Scattering: 10.77 barns
+      - Absorption: 2.97 barns
 
-Vacuum:
+Vacuum =========================================================================
   * All values set to zero.
