@@ -21,9 +21,9 @@ class UCNPrimaryGeneratorMessenger: public G4UImessenger
 
   private:
     UCNPrimaryGeneratorAction*   fPrimaryAction;
-    G4UIdirectory*               gunDirectory;
-    G4UIcmdWithADouble*          setGunEnergy_neVCmd;
-    G4UIcmdWith3VectorAndUnit*   setGunPositionCmd;
+    G4UIdirectory*               fGunDirectory;
+    G4UIcmdWithADouble*          fSetGunEnergy_neVCmd;
+    G4UIcmdWith3VectorAndUnit*   fSetGunPositionCmd;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

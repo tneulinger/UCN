@@ -26,9 +26,9 @@ public:
 private:
 
   G4ParticleGun*                 fParticleGun;
-  UCNPrimaryGeneratorMessenger*  gunMessenger;
-  G4double                       gunEnergy_neV;
-  G4ThreeVector                  gunPosition;   // mm
+  UCNPrimaryGeneratorMessenger*  fGunMessenger;
+  G4double                       fGunEnergy_neV;
+  G4ThreeVector                  fGunPosition;   // mm
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
