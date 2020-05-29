@@ -50,7 +50,8 @@ int main(int argc, char** argv)
   // G4cerr << "Registering detector..." << G4endl;
   // parse GDML file
   G4GDMLParser parser;
-  parser.SetOverlapCheck(true);
+  // parser.SetOverlapCheck(true);
+  parser.SetOverlapCheck(false);
   parser.Read(gdmlFile);
   runManager->SetUserInitialization(
     new UCNDetectorConstruction(parser.GetWorldVolume())

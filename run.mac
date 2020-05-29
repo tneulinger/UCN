@@ -1,0 +1,7 @@
+/gun/gunPosition 40 40 250 mm
+/gun/gunEnergyneV 100
+
+/detector/setMaxTime_s 50
+/run/reinitializeGeometry
+
+/run/beamOn 10

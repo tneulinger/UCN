@@ -42,7 +42,8 @@ void UCNEventAction::EndOfEventAction(const G4Event* event)
   fSnapshot->ResetSnapshotIndex();  // reset index
   fSnapshot->ResetSnapshotStatus(); // reset flags
 
-  // get information from hits collection 
+  // get information from hits collection
   G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);
-  G4cout << "    " << hc->GetSize() << " hits stored in this event" << G4endl;
+  G4cout << event->GetEventID() << ":    "
+    << hc->GetSize() << " hits stored in this event" << G4endl;
 }
