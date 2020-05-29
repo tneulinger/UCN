@@ -35,6 +35,7 @@
 #include "G4PropagatorInField.hh"
 
 #include "UCNDetectorConstruction.hh"
+#include "UCNDetectorMessenger.hh"
 #include "UCNMaterialDataHelper.hh"
 #include "UCNTrackerSD.hh"
 #include "G4SDManager.hh"
@@ -42,8 +43,11 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 UCNDetectorConstruction::UCNDetectorConstruction(G4VPhysicalVolume *setWorld)
- : fWorldPhysVol(0)
+ : fWorldPhysVol(0), fMaxStep_mm(0.5), fMaxTime_s(100.0)
 {
+
+  fDetectorMessenger = new UCNDetectorMessenger(this);
+
   fWorldPhysVol = setWorld;
   DefineMaterials();
 }
@@ -110,8 +114,8 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
   G4LogicalVolume* worldLogVol  = fWorldPhysVol->GetLogicalVolume();
 
   // ========== USER LIMITS ==========
-  G4double maxStep = 0.5*mm;
-  G4double maxTime = 200.*s;
+  G4double maxStep = fMaxStep_mm*mm;
+  G4double maxTime = fMaxTime_s*s;
   G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
   // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
   worldLogVol->SetUserLimits(stepLimit);
@@ -216,6 +220,20 @@ void UCNDetectorConstruction::ConstructSDandField()
 
      fieldManager->SetChordFinder(chordFinder);
   }
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void UCNDetectorConstruction::SetMaxTime_s(G4double t)
+{
+  fMaxTime_s = t;
+}
+
+//....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
+
+void UCNDetectorConstruction::SetMaxStep_mm(G4double dx)
+{
+  fMaxStep_mm = dx ;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

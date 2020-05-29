@@ -4,11 +4,23 @@ Usage overview:
   3. Run application.
   (See tutorial section below for examples.)
 
-UI macro commands:
-1) Set UCN initial KE in neV, e.g. "/gun/gunEnergy_neV 10". (Default = 10)
-1) Set UCN initial position in mm, e.g. "/gun/gunPosition 100.0 230.0 10.0 mm". (Default = 1,1,1mm)
+================================= Macro commands ===============================
 
-Inputs:
+1. Detector commands (/detector/):
+  a. Set maximum step size: "/detector/setMaxStep_mm <dx>".
+     * <dx> is in millimeters. Default is 0.5 mm.
+     * Must be followed by "/run/reinitializeGeometry" to take effect.
+  b. Set maximum simulation time: "/detector/setMaxTime_s <t>".
+     * <t> is in seconds. Default is 100.0 seconds.
+     * Must be followed by "/run/reinitializeGeometry" to take effect.
+2. Particle gun commands (/gun/):
+  a. Set UCN initial KE: "/gun/gunEnergy_neV <e>".
+     * <e> is in neV. Default is 100.0 neV.
+  b. Set UCN initial position: "/gun/gunPosition <x> <y> <z>".
+      * <x> <y> <z> are in millimeters. Default is  1.0 mm, 1.0 mm, 1.0 mm.
+
+================================= Inputs =======================================
+
 1) "snapshots.in":
   Text file listing times ("tA_i") at which to take "snapshots". The snapshot is
   a list of the UCN time, energy, position, and momentum and time "tB_i" where
@@ -20,7 +32,8 @@ Inputs:
     ...
     line N: tA_{N-1}
 
-Outputs:
+================================= Outputs=======================================
+
 1) "snapshots.out":
   Text file listing the snapshots. The file format is as follows:
     units:    sec.,  neV,     (mm, mm, mm),

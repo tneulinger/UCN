@@ -1,6 +1,8 @@
 #include "G4UIdirectory.hh"
 #include "G4UIcmdWithADouble.hh"
 #include "G4UIcmdWith3VectorAndUnit.hh"
+#include "G4SystemOfUnits.hh"
+#include "G4ThreeVector.hh"
 
 #include "UCNPrimaryGeneratorMessenger.hh"
 #include "UCNPrimaryGeneratorAction.hh"
@@ -21,7 +23,11 @@ UCNPrimaryGeneratorMessenger::UCNPrimaryGeneratorMessenger(UCNPrimaryGeneratorAc
   fSetGunPositionCmd->SetGuidance(" Set coord. of the gun position in mm.");
   fSetGunPositionCmd->SetParameterName("X","Y","Z",true,true);
   fSetGunPositionCmd->SetDefaultUnit("mm");
-  //fSetGunPositionCmd->SetDefaultValue(0.0*mm, 0.0*mm, 0.0*mm) ;
+  G4ThreeVector defaultPosition;
+  defaultPosition[0] = 1.0*mm;
+  defaultPosition[1] = 1.0*mm;
+  defaultPosition[2] = 1.0*mm;
+  fSetGunPositionCmd->SetDefaultValue( defaultPosition ) ;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo....
