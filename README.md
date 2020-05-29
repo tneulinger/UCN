@@ -1,8 +1,10 @@
-Usage overview:
+## Usage overview:
   1. Create CAD model of system to be simulated.
   2. Convert CAD model files to GDML.
   3. Run application.
   (See tutorial section below for examples.)
+
+![](images/example.jpg)
 
 ================================= Macro commands ===============================
 

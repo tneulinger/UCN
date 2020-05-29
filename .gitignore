@@ -8,3 +8,6 @@ test/snapshot
 
 # ignore sun2 models
 models/sun2/
+
+# ignore to-do list
+TODO
