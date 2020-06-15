@@ -95,11 +95,12 @@ void UCNDetectorConstruction::DefineMaterials()
     mpt->AddConstProperty("SCATCS",    mdh->GetScatCS());
     // Get the handle to the material
     theMat = G4Material::GetMaterial(matName);
+    G4cout << " ============= " << theMat->GetTotNbOfAtomsPerVolume() << G4endl;
     // Apply the UCN properties to this material
     theMat->SetMaterialPropertiesTable(mpt);
   }
 
-  // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+  G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
   // OLD
   // #include "UCNDetectorMaterials.icc"

@@ -30,6 +30,7 @@ MATERIALS_INFO = '''
 #@       - "Detector": used to register UCN hits
 #@       - "DLC": diamond-like carbon, 100% sp3
 #@       - "DPE": deuterated polyethylene
+#@       - "Fakeonium": a "fake" material for the user to plug in values
 #@       - "Fomblin": Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y
 #@       - "Nickel": naturally-occuring nickel
 #@       - "Steel": 316 stainless implemented in database
@@ -43,6 +44,7 @@ MATERIALS_LIST = [
     {"name" : "Detector",  "group" : "Other"},
     {"name" : "DLC",       "group" : "Other"},
     {"name" : "DPE",       "group" : "Other"},
+    {"name" : "Fakeonium", "group" : "Other"},
     {"name" : "Fomblin",   "group" : "Other"},
 	{"name" : "Nickel",    "group" : "Other"},
     {"name" : "Steel",     "group" : "Other"},
@@ -59,10 +61,11 @@ MATERIALS = '''
         <!-- ELEMENTS -->
         <element name="videRef"   formula="VACUUM" Z="1"> <atom value="1."/> </element>
         <element name="deteRef"   formula="DETECTOR" Z="1"> <atom value="1."/> </element>
+        <element name="fakeRef"   formula="DETECTOR" Z="1"> <atom value="1."/> </element>
         <element name="deuterium" formula="D"> <fraction n="1.0" ref="H2"/> </element>
-        <element name="carbon"    formula="C"   Z="6"> <atom value="12.011"/> </element>
+        <element name="carbon"    formula="C"   Z="6">    <atom value="12.011"/> </element>
         <element name="oxygen"    formula="O"   Z="8">    <atom value="15.999"/>   </element>
-        <element name="fluorine"  formula="F"   Z="9">    <atom value="15.999"/>   </element>
+        <element name="fluorine"  formula="F"   Z="9">    <atom value="18.998"/>   </element>
         <element name="iron"      formula="Fe"  Z="26">   <atom value="55.8450"/>  </element>
         <element name="nickel"    formula="Ni"  Z="28">   <atom value="58.6934"/>  </element>
         <element name="copper"    formula="Cu"  Z="29">   <atom value="63.55"/>    </element>
@@ -102,6 +105,12 @@ MATERIALS = '''
             <D value="1.05" unit="g/cm3"/>
             <composite n="2" ref="deuterium"/>
             <composite n="1" ref="carbon"/>
+        </material>
+
+        <!-- FAKEONIUM -->
+        <material name="Fakeonium" state="solid">
+           <D value="8.96" unit="g/cm3"/>
+           <fraction n="1." ref="fakeRef"/>
         </material>
 
         <!-- FOMBLIN Y LVAC 06/6 -->

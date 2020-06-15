@@ -57,6 +57,9 @@ DPE ============================================================================
       - Scattering: 6.94 barns
       - Absorption: 0.0015 barns
 
+Fakeonium ======================================================================
+  * A "fake" material to plug in any desired properties.
+
 Fomblin ========================================================================
   * Fermi potential stated in Golub with reference to DJ Richardson thesis. Can't find it.
   * Loss from https://doi.org/10.1016/0168-9002(91)90069-3.

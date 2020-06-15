@@ -1,4 +1,4 @@
-0.0        // DIFFUSION -
+0.1        // DIFFUSION -
 109.0      // FERMIPOT  "109.0 neV"
 0.0        // SPINFLIP  -
 1.0e-4     // LOSS      "1.0e-4"
