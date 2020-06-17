@@ -66,15 +66,16 @@
 ### Materials
 
 #### Currently-implemented materials:
-- "Copper":   naturally-occuring copper
-- "CYTOP":    AGC Chemicals Company polyfluoromer
-- "Detector": very dense material with unity UCN loss factor (eta=1)
-- "DLC":      diamond-like carbon, 100% sp3
-- "DPE":      deuterated polyethylene
-- "Fomblin":  Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y, polyfluoromer
-- "Nickel":   naturally-occuring nickel
-- "Steel":    naturally-occuring iron
-- "Vacuum":   nothing (interstellar density hydrogen)
+- "Copper":    naturally-occuring copper
+- "CYTOP":     AGC Chemicals Company polyfluoromer
+- "Detector":  very dense material with unity UCN loss factor (eta=1)
+- "DLC":       diamond-like carbon, 100% sp3
+- "DPE":       deuterated polyethylene
+- "Fakeonium": a "fake" material for the user to apply to materials
+- "Fomblin":   Fomblin Y LVAC 06/6, CF3O[CF(CF3)CF2O]x[CF2O]yCF3, x=y, polyfluoromer
+- "Nickel":    naturally-occuring nickel
+- "Steel":     naturally-occuring iron
+- "Vacuum":    nothing (interstellar density hydrogen)
 
 UCN material properties are stored in text files in the materials/ directory.
 Basic material properties (density, composition, etc.) are listed under
@@ -90,7 +91,7 @@ UCN materials properties are split into two categories, boundary and bulk.
 
 **Bulk properties are:**
 - "LOSSCS" = loss cross section in barns, doesn't take into account UCN velocity, set to zero if "ABSCS" is used
-- "ABSCS" = absorption cross section in barns (preferred)
+- "ABSCS"  = absorption cross section in barns (preferred)
 - "SCATCS" = total scattering cross section in barns
 
 
