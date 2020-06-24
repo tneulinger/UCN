@@ -413,7 +413,7 @@ def stl_to_gdml(fname):
 	fout = open(outfilename,"w")
 	fout.write(HEADER)
 	fout.write(SCHEMA)
-	#fout.write(MATERIALS)
+	# fout.write(MATERIALS)
 	fout.write(vertices)
 	fout.write(solids)
 	fout.write(structure)
