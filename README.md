@@ -42,14 +42,15 @@
 1. **"snapshots.out":**
   Text file listing the snapshots. Line "j" may or may not be N-1 depending on
   if the UCN lasts that long. The next lines will be for subsequent UCNs. The
-  total number depends on the number of runs. The file format is as follows:
+  total number depends on the number of runs. The file format is as follows (
+  time is in seconds, KE is in neV, position is in mm, velocity is in m/s):
     ```
-    line 1:   tB_1, KE(tB_1), (x,y,z)@(tB_1), (px,py,pz)@(tB_1)
-    line 2:   tB_2, KE(tB_1), (x,y,z)@(tB_2), (px,py,pz)@(tB_2)
+    line 1:   tB_1, KE(tB_1), (x,y,z)@(tB_1), (vx,vy,vz)@(tB_1)
+    line 2:   tB_2, KE(tB_1), (x,y,z)@(tB_2), (vx,vy,vz)@(tB_2)
     ...
-    line j:   tB_j, KE(tB_j), (x,y,z)@(tB_j), (px,py,pz)@(tB_j)
-    line j+1: tB_1, KE(tB_1), (x,y,z)@(tB_1), (px,py,pz)@(tB_1)
-    line j+2: tB_2, KE(tB_1), (x,y,z)@(tB_2), (px,py,pz)@(tB_2)
+    line j:   tB_j, KE(tB_j), (x,y,z)@(tB_j), (vx,vy,vz)@(tB_j)
+    line j+1: tB_1, KE(tB_1), (x,y,z)@(tB_1), (vx,vy,vz)@(tB_1)
+    line j+2: tB_2, KE(tB_1), (x,y,z)@(tB_2), (vx,vy,vz)@(tB_2)
     ...
     ```
 
@@ -109,7 +110,7 @@ UCN materials properties are split into two categories, boundary and bulk.
       $ cmake ../
       $ make
       $ cp ../models/example/*.gdml ./
-      $ ./UCN example1.gdml
+      $ ./UCN example.gdml
       ```
   3. Some basic UI commands are...
       ```
@@ -124,12 +125,13 @@ UCN materials properties are split into two categories, boundary and bulk.
      include the desired material. For example "MyGizmo_Nickel.STL". See materials/
      directory for list of implemented materials and names.
   2. Convert STL files to GDML files. This will produce a mySimulation.gdml file
-     in addition to .gdml files for all your model parts. For example, in models/ directory...
+     in addition to .gdml files for all your model parts. (Warning: the GDML parser
+     will complain because of the '.' in the file name.) For example, in the models directory...
       ```
       $ mkdir mySimulation
       $ cd mySimulation
       $ cp all/your/STL/files ./
-      $ python ../../stl_gdml.py mySimulation ./*.STL
+      $ python path/to/stl_gdml.py mySimulation ./*.STL
       ```
   3. Run the application. In build/ directory...
      ```  
