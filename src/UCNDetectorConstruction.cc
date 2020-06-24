@@ -71,6 +71,7 @@ void UCNDetectorConstruction::DefineMaterials()
   G4int numOfMaterials = G4Material::GetNumberOfMaterials();
 
   // Apply UCN materials properties to materials
+  // G4double density, scatcs, scatal, abscs, absal, vel;
   G4String matName;
   G4String matFileName;
   G4Material* theMat;
@@ -95,12 +96,33 @@ void UCNDetectorConstruction::DefineMaterials()
     mpt->AddConstProperty("SCATCS",    mdh->GetScatCS());
     // Get the handle to the material
     theMat = G4Material::GetMaterial(matName);
-    G4cout << " ============= " << theMat->GetTotNbOfAtomsPerVolume() << G4endl;
     // Apply the UCN properties to this material
     theMat->SetMaterialPropertiesTable(mpt);
+
+    // // print some information
+    // G4cout << " ============= " << matName << " ============= " << G4endl;
+    // density = theMat->GetTotNbOfAtomsPerVolume();
+    // G4cout << "density: " << density << G4endl;
+    // // G4UCNMultiScattering
+    // scatcs = mpt->GetConstProperty("SCATCS");
+    // scatcs *= barn;
+    // G4cout << "SCATCS: " << scatcs << G4endl;
+    // scatal = 1./density/scatcs;
+    // G4cout << "SCATCS attenuation length: " << scatal << G4endl;
+    // // G4UCNAbsorpton
+    // abscs = mpt->GetConstProperty("ABSCS");
+    // abscs *= barn;
+    // G4cout << "ABSCS: " << abscs << G4endl;
+    // vel = 4*meter/second;
+    // abscs *= 2200.*meter/second/vel;
+    // G4cout << "ABSCS (scaled): " << abscs << G4endl;
+    // absal = 1./density/abscs;
+    // G4cout << "ABSCS attenuation length: " << absal << G4endl;
+
+
   }
 
-  G4cout << *(G4Material::GetMaterialTable()) << G4endl;
+  // G4cout << *(G4Material::GetMaterialTable()) << G4endl;
 
   // OLD
   // #include "UCNDetectorMaterials.icc"
@@ -169,8 +191,9 @@ void UCNDetectorConstruction::ConstructSDandField()
     if (daughterMatName == "Detector")
     {
       daughterLogVolName = daughterLogVol->GetName();
-      G4cerr << "DAUGHTER NAME IS ====== " << daughterLogVolName << G4endl;
       SetSensitiveDetector(daughterLogVolName, aTrackerSD, true);
+      G4cout << " ===== " << daughterLogVolName <<
+        " has been registered as a detector" << " ===== " << G4endl;
     }
   }
 
@@ -199,6 +222,7 @@ void UCNDetectorConstruction::ConstructSDandField()
 
      // Set accuracy parameters
      G4double deltaChord        = 3.0*mm;
+     // G4double deltaChord        = 0.125*mm;
      chordFinder->SetDeltaChord( deltaChord );
 
      G4double deltaOneStep      = 0.01*mm;

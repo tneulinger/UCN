@@ -45,5 +45,5 @@ void UCNEventAction::EndOfEventAction(const G4Event* event)
   // get information from hits collection
   G4VHitsCollection* hc = event->GetHCofThisEvent()->GetHC(0);
   G4cout << event->GetEventID() << ":    "
-    << hc->GetSize() << " hits stored in this event" << G4endl;
+    << hc->GetSize() << " UCNs detected in this event." << G4endl;
 }

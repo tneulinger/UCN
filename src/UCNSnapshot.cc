@@ -116,9 +116,19 @@ G4bool UCNSnapshot::ShouldWeTakeASnapshotNow(G4double theTimeNowInNanoSeconds)
 
 void UCNSnapshot::WriteTimeEnergyPositionMomentum()
 {
-  // write information to file
+  // get energy in neV
   G4double EneV = fEnergy*1e6*1e9;
-  fOutStream << fTime << ", " << EneV << ", " << fPosition << ", " << fMomentum << "\n";
+
+  // get velocity (in m/s) from momentum (in MeV/c)
+  // first multiply by 1e6*q_e/c to convert to SI, then divide by m_n
+  // 1e6 = 1e6 eV per MeV
+  // q_e = 1.602176634e-19 J per eV (J = kg*m^2/S^2)
+  // c   = 299792458 m/s (not in mm/ns! for some reason...)
+  // m_n = 1.67492749804e-27 kg
+  G4ThreeVector Vmps = fMomentum*319075.6614201027;
+
+  // write information to file
+  fOutStream << fTime << ", " << EneV << ", " << fPosition << ", " << Vmps << "\n";
 
   // mark the status of this snapshot as taken
   fSnapshotStatus[fSnapshotIndex] = true;

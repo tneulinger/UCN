@@ -47,13 +47,13 @@ void UCNRunAction::EndOfRunAction(const G4Run*)
 
 
   // ===== BOUNDARY PROCESS TABLE =====
-  // G4ProcessTable* processTable = G4ProcessTable::GetProcessTable();
-  //
-  // G4UCNBoundaryProcess* ucnBoundaryProcess =
-  //            (G4UCNBoundaryProcess*) processTable->
-  //            FindProcess("UCNBoundaryProcess",G4Neutron::NeutronDefinition());
-  //
-  // ucnBoundaryProcess->BoundaryProcessSummary();
+  G4ProcessTable* processTable = G4ProcessTable::GetProcessTable();
+
+  G4UCNBoundaryProcess* ucnBoundaryProcess =
+             (G4UCNBoundaryProcess*) processTable->
+             FindProcess("UCNBoundaryProcess",G4Neutron::NeutronDefinition());
+
+  ucnBoundaryProcess->BoundaryProcessSummary();
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

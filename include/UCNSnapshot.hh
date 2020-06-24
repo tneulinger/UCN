@@ -64,10 +64,10 @@ class UCNSnapshot
     std::vector<G4bool>   fSnapshotStatus;
 
     // temporary variables to store time, energy, position, and momentum
-    G4double      fTime;
-    G4double      fEnergy;
-    G4ThreeVector fPosition;
-    G4ThreeVector fMomentum;
+    G4double      fTime;      // in seconds
+    G4double      fEnergy;    // in MeV, converted to neV before recording to file
+    G4ThreeVector fPosition;  // in mm
+    G4ThreeVector fMomentum;  // in MeV/c (with c in m/s, not mm/ns ???)
 
 };
 
