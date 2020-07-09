@@ -2,15 +2,20 @@
 build/
 
 # ignore testing
-test/apply_materials_properties
-test/sun2_geometry_view
-test/snapshot
+test/
 
-# ignore script checkpoints
-scripts/.ipynb_checkpoints
+# ignore scripts
+scripts/
 
 # ignore sun2 models
 models/sun2/
+models/test/
 
 # ignore to-do list
 TODO
+
+# ignore notes
+USEFUL
+
+# ignore old
+old/
