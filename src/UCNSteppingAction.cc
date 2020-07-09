@@ -1,14 +1,15 @@
 #include "G4Event.hh"
 #include "G4Step.hh"
 #include "G4RunManager.hh"
+#include "G4TrackStatus.hh"
 
 #include "UCNAnalysis.hh"
 #include "UCNEventAction.hh"
 #include "UCNSnapshot.hh"
 #include "UCNSteppingAction.hh"
 
-// #include <fstream>
-// std::ofstream trajectoryFile("trajectory.out");
+#include <fstream>
+std::ofstream trajectoryFile("trajectory.out");
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //
@@ -62,27 +63,30 @@ void UCNSteppingAction::UserSteppingAction(const G4Step* step)
   // const G4Event* event = G4RunManager::GetRunManager()->GetCurrentEvent();
   // G4int eventID = event->GetEventID();
   // G4int trackID = step->GetTrack()->GetTrackID();
-  // if (eventID==0 && trackID==1)
+  // if (step->GetTrack()->GetTrackStatus() != fStopAndKill)
   // {
-  //   // pre step point
-  //   G4StepPoint* prePoint = step->GetPreStepPoint();
-  //   G4double preTime = prePoint->GetGlobalTime()*1e-9;                // seconds
-  //   G4double preEne  = prePoint->GetKineticEnergy()*1e6*1e9;;         // neV
-  //   G4ThreeVector prePos = prePoint->GetPosition();                   // mm
-  //   G4ThreeVector preVel = prePoint->GetMomentum()*319075.6614201027; // m/s
-  //   G4String preMat = prePoint->GetMaterial()->GetName();
-  //   // post step point
-  //   G4StepPoint* posPoint = step->GetPostStepPoint();
-  //   G4double posTime = posPoint->GetGlobalTime()*1e-9;                // seconds
-  //   G4double posEne  = posPoint->GetKineticEnergy()*1e6*1e9;;         // neV
-  //   G4ThreeVector posPos = posPoint->GetPosition();                   // mm
-  //   G4ThreeVector posVel = posPoint->GetMomentum()*319075.6614201027; // m/s
-  //   G4String posMat = posPoint->GetMaterial()->GetName();
-  //   G4String procName = posPoint->GetProcessDefinedStep()->GetProcessName();
-  //   // write to file
-  //   trajectoryFile << preTime << ", " << preMat << ", " << preEne << ", " << prePos << ", " << preVel << " || "
-  //                  << procName << " || "
-  //                  << posTime << ", " << posMat << ", " << posEne << ", " << posPos << ", " << posVel << '\n';
+  //   if (eventID==0 && trackID==1)
+  //   {
+  //     // pre step point
+  //     G4StepPoint* prePoint = step->GetPreStepPoint();
+  //     G4double preTime = prePoint->GetGlobalTime()*1e-9;                // seconds
+  //     G4double preEne  = prePoint->GetKineticEnergy()*1e6*1e9;;         // neV
+  //     G4ThreeVector prePos = prePoint->GetPosition();                   // mm
+  //     G4ThreeVector preVel = prePoint->GetMomentum()*319075.6614201027; // m/s
+  //     G4String preMat = prePoint->GetMaterial()->GetName();
+  //     // post step point
+  //     G4StepPoint* posPoint = step->GetPostStepPoint();
+  //     G4double posTime = posPoint->GetGlobalTime()*1e-9;                // seconds
+  //     G4double posEne  = posPoint->GetKineticEnergy()*1e6*1e9;;         // neV
+  //     G4ThreeVector posPos = posPoint->GetPosition();                   // mm
+  //     G4ThreeVector posVel = posPoint->GetMomentum()*319075.6614201027; // m/s
+  //     G4String posMat = posPoint->GetMaterial()->GetName();
+  //     G4String procName = posPoint->GetProcessDefinedStep()->GetProcessName();
+  //     // write to file
+  //     trajectoryFile << preTime << ", "  << preMat << ", " << preEne << ", " << prePos << ", " << preVel << " || "
+  //                    << procName << " || "
+  //                    << posTime << ", "  << posMat << ", " << posEne << ", " << posPos << ", " << posVel << '\n';
+  //   }
   // }
 
   // ===== POSITION BINNING AT TIME =====

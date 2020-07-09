@@ -2,6 +2,7 @@
 
 #include "G4ProcessTable.hh"
 #include "G4Run.hh"
+#include "G4RunManager.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4UCNBoundaryProcess.hh"
 
@@ -24,6 +25,9 @@ UCNRunAction::~UCNRunAction()
 
 void UCNRunAction::BeginOfRunAction(const G4Run*)
 {
+  //inform the runManager to save random number seed
+  // G4RunManager::GetRunManager()->SetRandomNumberStore(true);
+
   // ===== POSITION BINNING AT TIME =====
   // // get analysis manager
   // auto analysisManager = G4AnalysisManager::Instance();

@@ -1,4 +1,3 @@
-
 #include "globals.hh"
 
 #include "G4GDMLParser.hh"
@@ -15,6 +14,11 @@
 
 int main(int argc, char** argv)
 {
+  // set up random engine and seed
+  G4int seed = 124;
+  CLHEP::HepRandom::setTheEngine(new CLHEP::RanecuEngine);
+  CLHEP::HepRandom::setTheSeed(seed);
+  G4cout << "Random seed: " << G4Random::getTheSeed() << G4endl;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 

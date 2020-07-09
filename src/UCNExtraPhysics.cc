@@ -56,8 +56,8 @@ void UCNExtraPhysics::ConstructProcess()
 
     ConstructUCN();
 
-//    G4Transportation::EnableUseMagneticMoment();
-    G4Transportation::EnableGravity();
+   // G4Transportation::EnableUseMagneticMoment();
+   G4Transportation::EnableGravity(true);
 
 }
 
@@ -82,16 +82,15 @@ void UCNExtraPhysics::ConstructUCN()
         }
 
         if (particleName == "neutron") {
+          G4UCNBoundaryProcess* ucnBoundaryProcess =
+                                                  new G4UCNBoundaryProcess();
+          ucnBoundaryProcess->SetMicroRoughness(false);
+          ucnBoundaryProcess->SetVerboseLevel(0);
+          pmanager->AddDiscreteProcess(ucnBoundaryProcess);
+
            pmanager->AddDiscreteProcess(new G4UCNLoss());
            pmanager->AddDiscreteProcess(new G4UCNAbsorption());
            pmanager->AddDiscreteProcess(new G4UCNMultiScattering());
-
-           G4UCNBoundaryProcess* ucnBoundaryProcess =
-                                                   new G4UCNBoundaryProcess();
-           ucnBoundaryProcess->SetMicroRoughness(true);
-           ucnBoundaryProcess->SetVerboseLevel(0);
-
-           pmanager->AddDiscreteProcess(ucnBoundaryProcess);
         }
     }
 }

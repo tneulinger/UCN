@@ -167,8 +167,6 @@ G4ThreadLocal G4UniformGravityField* UCNDetectorConstruction::fField = 0;
 void UCNDetectorConstruction::ConstructSDandField()
 {
 
-  // example - stop_Detector-1.STL
-
   // register the detectors, do this by searching for all logical volumes which
   // have the "Detector" material applied to them and registering these as
   // sensitive detectors
@@ -183,10 +181,14 @@ void UCNDetectorConstruction::ConstructSDandField()
   G4LogicalVolume*   daughterLogVol;
   G4String           daughterMatName;
   G4String           daughterLogVolName;
+  G4double maxStep = fMaxStep_mm*mm;
+  G4double maxTime = fMaxTime_s*s;
+  G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
   for (G4int i=0; i<numberOfDaughters; i++)
   {
     daughterPhysVol = worldLogVol->GetDaughter(i);
     daughterLogVol  = daughterPhysVol->GetLogicalVolume();
+    daughterLogVol->SetUserLimits(stepLimit);
     daughterMatName = daughterLogVol->GetMaterial()->GetName();
     if (daughterMatName == "Detector")
     {
@@ -215,14 +217,14 @@ void UCNDetectorConstruction::ConstructSDandField()
      G4MagIntegratorStepper* stepper = new G4ClassicalRK4(equation,8);
 //     G4MagIntegratorStepper* stepper = new G4ClassicalRK4(equation,12);
 
-     G4double minStep           = 0.01*mm;
+     G4double minStep           = 0.1*mm;
 
      G4ChordFinder* chordFinder =
                    new G4ChordFinder((G4MagneticField*)fField,minStep,stepper);
 
      // Set accuracy parameters
-     G4double deltaChord        = 3.0*mm;
-     // G4double deltaChord        = 0.125*mm;
+     G4double deltaChord     = 3.0*mm;
+     // G4double deltaChord        = 1.0*nm;
      chordFinder->SetDeltaChord( deltaChord );
 
      G4double deltaOneStep      = 0.01*mm;

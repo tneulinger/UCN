@@ -13,7 +13,7 @@
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 UCNPrimaryGeneratorAction::UCNPrimaryGeneratorAction(void) :
- fGunPosition(1.000*mm,1.000*mm,1.000*mm), fGunEnergy_neV(100.)
+ fGunPosition(0.000*mm,0.000*mm,0.000*mm), fGunEnergy_neV(100.)
 {
   G4int n_particle = 1;
   fParticleGun  = new G4ParticleGun(n_particle);
@@ -62,7 +62,7 @@ void UCNPrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   G4double y = std::cos(phi);                    // y, normally z
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(x,y,z));
   // * constant direction
-  // fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.0,0.0,1.0));
+  // fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0,1.0,1.0));
 
   fParticleGun->GeneratePrimaryVertex(anEvent);
 }
