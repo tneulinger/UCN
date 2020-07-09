@@ -1,7 +1,6 @@
 ## Usage overview:
-  1. Create CAD model of system to be simulated.
-  2. Convert CAD model files to GDML.
-  3. Run application.
+  1. Create GDML model of system to be simulated.
+  2. Run application.
 
 (See tutorial section below for examples.)
 
@@ -79,8 +78,8 @@
 - "Vacuum":    nothing (interstellar density hydrogen)
 
 UCN material properties are stored in text files in the materials/ directory.
-Basic material properties (density, composition, etc.) are listed under
-MATERIALS in stl_gdml.py in the GDML XML format.
+Basic material properties (density, composition, etc.) are listed in
+materials/MATERIALS in the GDML XML format.
 
 UCN materials properties are split into two categories, boundary and bulk.
 
@@ -120,25 +119,8 @@ UCN materials properties are split into two categories, boundary and bulk.
   4. Run information is output to "snapshots.out", "alive.out", and
      "detector.out".
 
-### User geometry:
-  1. Save CAD model files of system as ".STL" of type ASCII. File names should
-     include the desired material. For example "MyGizmo_Nickel.STL". See materials/
-     directory for list of implemented materials and names.
-  2. Convert STL files to GDML files. This will produce a mySimulation.gdml file
-     in addition to .gdml files for all your model parts. (Warning: the GDML parser
-     will complain because of the '.' in the file name.) For example, in the models directory...
-      ```
-      $ mkdir mySimulation
-      $ cd mySimulation
-      $ cp all/your/STL/files ./
-      $ python path/to/stl_gdml.py mySimulation ./*.STL
-      ```
-  3. Run the application. In build/ directory...
-     ```  
-     $ cp ../models/mySimulation/*.gdml
-     $ ./UCN mySimulation.gdml
      ```
 
 ## Add new material:
-  1. Update stl_gdml.py with desired material according to GDML XML format.
+  1. Update materials/MATERIALS with desired material according to GDML XML format.
   2. Add "NewMaterial.txt" to materials/ directory with proper format.
