@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    &materials;
+
+    <solids>
+        <torus name="elbow1_solid" lunit= "mm" rmin="25.0" rmax="26.5" rtor="70.0" deltaphi="60" startphi="120" aunit="deg" />
+    </solids>
+
+    <structure>
+        <volume name="elbow1_volume">
+            <materialref ref="Steel"/>
+            <solidref ref="elbow1_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="elbow1_volume"/>
+    </setup>
+
+</gdml>

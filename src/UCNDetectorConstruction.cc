@@ -139,8 +139,8 @@ G4VPhysicalVolume* UCNDetectorConstruction::Construct()
   // ========== USER LIMITS ==========
   G4double maxStep = fMaxStep_mm*mm;
   G4double maxTime = fMaxTime_s*s;
-  G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
-  // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
+  // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
+  G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
   worldLogVol->SetUserLimits(stepLimit);
   // =================================
 
@@ -183,7 +183,8 @@ void UCNDetectorConstruction::ConstructSDandField()
   G4String           daughterLogVolName;
   G4double maxStep = fMaxStep_mm*mm;
   G4double maxTime = fMaxTime_s*s;
-  G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
+  // G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,maxTime);
+  G4UserLimits* stepLimit = new G4UserLimits(maxStep,DBL_MAX,DBL_MAX);
   for (G4int i=0; i<numberOfDaughters; i++)
   {
     daughterPhysVol = worldLogVol->GetDaughter(i);

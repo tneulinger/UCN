@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <position name="center" unit="mm" x="0" y="0" z="0"/>
+    <position name="bottle_pipe_center" unit="mm" x="0" y="0" z="818.045"/>
+    <position name="elbow1_center" unit="mm" x="70" y="0" z="1336.69"/>
+    <rotation name="elbow1_rot" x="-90" unit="deg"/>
+    <position name="middle_pipe_center" unit="mm" x="280.77565391" y="0" z="1542.51071666" />
+    <rotation name="middle_pipe_rot" y="-60" unit="deg" />
+
+  </define>
+
+  &materials;
+
+  <solids>
+      <box  lunit="mm" name="world_solid" x="10000.00" y="10000.00" z="10000.00" />
+  </solids>
+
+  <structure>
+  <volume name="world_volume">
+      <materialref ref="Vacuum"/>
+      <solidref ref="world_solid"/>
+
+      <physvol>
+          <file name="bottle_open_CYTOP.gdml"/>
+          <positionref ref="center"/>
+      </physvol>
+
+      <physvol>
+          <file name="bottle_pipe.gdml"/>
+          <positionref ref="bottle_pipe_center"/>
+      </physvol>
+
+      <physvol>
+          <file name="elbow1.gdml"/>
+          <positionref ref="elbow1_center"/>
+          <rotationref ref="elbow1_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="middle_pipe.gdml"/>
+          <positionref ref="middle_pipe_center"/>
+          <rotationref ref="middle_pipe_rot" />
+      </physvol>
+
+
+  </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="world_volume"/>
+  </setup>
+
+</gdml>

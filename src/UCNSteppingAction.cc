@@ -9,7 +9,7 @@
 #include "UCNSteppingAction.hh"
 
 #include <fstream>
-std::ofstream trajectoryFile("trajectory.out");
+// std::ofstream trajectoryFile("trajectory.out");
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 //
