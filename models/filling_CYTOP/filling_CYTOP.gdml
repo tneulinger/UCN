@@ -29,6 +29,19 @@
 
     <position name="verti_wafer_center" unit="mm" x="1620.18072595" y="50.75" z="1096.90177827"/>
     <rotation name="verti_wafer_rot" x="90" unit="deg"/>
+
+    <position name="verti_pipe_center" unit="mm" x="1620.18072595" y="-142.6" z="1096.90177827"/>
+    <rotation name="verti_pipe_rot" x="90" unit="deg"/>
+
+    <position name="cone_center" unit="mm" x="1620.18072595" y="-257.7" z="1096.90177827"/>
+    <rotation name="cone_rot" x="90" unit="deg"/>
+
+    <position name="source_center" unit="mm" x="1837.33659595" y="-356.8" z="971.52677827"/>
+    <rotation name="source_rot" y="60" unit="deg"/>
+
+    <position name="block_center" unit="mm" x="1403.58777247" y="0.0" z="1221.95177827"/>
+    <rotation name="block_rot" y="60" unit="deg"/>
+
   </define>
 
   &materials;
@@ -92,6 +105,30 @@
           <file name="verti_wafer.gdml"/>
           <positionref ref="verti_wafer_center"/>
           <rotationref ref="verti_wafer_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="verti_pipe.gdml"/>
+          <positionref ref="verti_pipe_center"/>
+          <rotationref ref="verti_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="cone.gdml"/>
+          <positionref ref="cone_center"/>
+          <rotationref ref="cone_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="source.gdml"/>
+          <positionref ref="source_center"/>
+          <rotationref ref="source_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="block.gdml"/>
+          <positionref ref="block_center"/>
+          <rotationref ref="block_rot" />
       </physvol>
 
   </volume>

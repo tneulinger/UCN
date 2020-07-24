@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+      <position name="block_1_pos" unit="mm" x="38.125" y="0" z="0"/>
+      <position name="block_2_pos" unit="mm" x="-38.125" y="0" z="0"/>
+      <position name="block_3_pos" unit="mm" x="0" y="38.125" z="0"/>
+  </define>
+
+    &materials;
+
+    <solids>
+
+      <tube lunit="mm" name="tube_1_solid" rmin="0" rmax="24.9" z="50.0" deltaphi="360" aunit="deg"/>
+      <trd  lunit="mm" name="trd_1_solid" x1="41.25" x2="55" y1="55" y2="55" z="55.02" />
+      <trd  lunit="mm" name="trd_2_solid" x1="55" x2="55" y1="41.25" y2="55" z="55.02" />
+
+
+      <subtraction name="block_1_solid">
+        <first ref="tube_1_solid" />
+        <second ref="trd_1_solid" />
+        <positionref ref="block_1_pos" />
+      </subtraction>
+
+      <subtraction name="block_2_solid">
+        <first ref="block_1_solid" />
+        <second ref="trd_1_solid" />
+        <positionref ref="block_2_pos" />
+      </subtraction>
+
+      <subtraction name="block_3_solid">
+        <first ref="block_2_solid" />
+        <second ref="trd_2_solid" />
+        <positionref ref="block_3_pos" />
+      </subtraction>
+
+    </solids>
+
+    <structure>
+        <volume name="block_volume">
+            <materialref ref="Copper"/>
+            <solidref ref="block_3_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="block_volume"/>
+    </setup>
+
+</gdml>

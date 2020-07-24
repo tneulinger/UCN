@@ -1,0 +1,7 @@
+0.1        // DIFFUSION  -
+214.7      // FERMIPOT   "214.7 neV"
+0.0        // SPINFLIP   -
+1.3e-4     // LOSS       "1.3e-4"
+0.0        // LOSSCS     -
+0.0015     // ABSCS      "0.0015 barns"
+6.94       // SCATCS     "6.94 barns"

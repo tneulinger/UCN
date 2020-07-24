@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <position name="center" unit="mm" x="0" y="0" z="0"/>
+
+    <position name="bottle_pipe_center" unit="mm" x="0" y="0" z="818.045"/>
+
+    <position name="elbow1_center" unit="mm" x="70" y="0" z="1336.69"/>
+    <rotation name="elbow1_rot" x="-90" unit="deg"/>
+
+    <position name="middle_pipe_center" unit="mm" x="283.71383571" y="0" z="1540.90677827" />
+    <rotation name="middle_pipe_rot" y="-60" unit="deg" />
+
+    <position name="elbow2_center" unit="mm" x="567.42767143" y="0" z="1623.88"/>
+    <rotation name="elbow2_rot" x="-90" unit="deg"/>
+
+    <position name="horiz_pipe_center" unit="mm" x="1078.82824605" y="0" z="1409.45177827"/>
+    <rotation name="horiz_pipe_rot" y="60" unit="deg"/>
+
+    <position name="cross_center" unit="mm" x="1620.18072595" y="0" z="1096.90177827"/>
+    <rotation name="cross_rot" y="60" unit="deg"/>
+
+    <position name="horiz_wafer_center" unit="mm" x="1664.13151520" y="0" z="1071.52677827"/>
+    <rotation name="horiz_wafer_rot" y="60" unit="deg"/>
+
+    <position name="verti_wafer_center" unit="mm" x="1620.18072595" y="50.75" z="1096.90177827"/>
+    <rotation name="verti_wafer_rot" x="90" unit="deg"/>
+
+    <position name="verti_pipe_center" unit="mm" x="1620.18072595" y="-142.6" z="1096.90177827"/>
+    <rotation name="verti_pipe_rot" x="90" unit="deg"/>
+
+    <position name="cone_center" unit="mm" x="1620.18072595" y="-257.7" z="1096.90177827"/>
+    <rotation name="cone_rot" x="90" unit="deg"/>
+
+    <position name="source_center" unit="mm" x="1837.33659595" y="-356.8" z="971.52677827"/>
+    <rotation name="source_rot" y="60" unit="deg"/>
+  </define>
+
+  &materials;
+
+  <solids>
+      <box  lunit="mm" name="world_solid" x="10000.00" y="10000.00" z="10000.00" />
+  </solids>
+
+  <structure>
+  <volume name="world_volume">
+      <materialref ref="Vacuum"/>
+      <solidref ref="world_solid"/>
+
+      <physvol>
+          <file name="bottle_open_CYTOP.gdml"/>
+          <positionref ref="center"/>
+      </physvol>
+
+      <physvol>
+          <file name="bottle_pipe.gdml"/>
+          <positionref ref="bottle_pipe_center"/>
+      </physvol>
+
+      <physvol>
+          <file name="elbow1.gdml"/>
+          <positionref ref="elbow1_center"/>
+          <rotationref ref="elbow1_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="middle_pipe.gdml"/>
+          <positionref ref="middle_pipe_center"/>
+          <rotationref ref="middle_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="elbow2.gdml"/>
+          <positionref ref="elbow2_center"/>
+          <rotationref ref="elbow2_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="horiz_pipe.gdml"/>
+          <positionref ref="horiz_pipe_center"/>
+          <rotationref ref="horiz_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="cross.gdml"/>
+          <positionref ref="cross_center"/>
+          <rotationref ref="cross_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="horiz_wafer.gdml"/>
+          <positionref ref="horiz_wafer_center"/>
+          <rotationref ref="horiz_wafer_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="verti_wafer.gdml"/>
+          <positionref ref="verti_wafer_center"/>
+          <rotationref ref="verti_wafer_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="verti_pipe.gdml"/>
+          <positionref ref="verti_pipe_center"/>
+          <rotationref ref="verti_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="cone.gdml"/>
+          <positionref ref="cone_center"/>
+          <rotationref ref="cone_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="source.gdml"/>
+          <positionref ref="source_center"/>
+          <rotationref ref="source_rot" />
+      </physvol>
+
+  </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="world_volume"/>
+  </setup>
+
+</gdml>
