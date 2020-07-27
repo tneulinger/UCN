@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+      <position name="center" unit="mm" x="0" y="0" z="0"/>
+  </define>
+
+    &materials;
+
+    <solids>
+
+      <box  lunit="mm" name="outer_box_solid" x="103.00" y="103.00" z="103.00" />
+      <box  lunit="mm" name="inner_box_solid" x="100.00" y="100.00" z="100.00" />
+
+      <subtraction name="box_solid">
+        <first ref="outer_box_solid" />
+        <second ref="inner_box_solid" />
+        <positionref ref="center" />
+      </subtraction>
+
+    </solids>
+
+    <structure>
+        <volume name="box_volume">
+            <materialref ref="DLC"/>
+            <solidref ref="box_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="box_volume"/>
+    </setup>
+
+</gdml>
