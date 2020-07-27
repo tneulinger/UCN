@@ -1,3 +1,7 @@
+# for copying inputs and moving outputs to directory after run
+# also makes a copy of materials files that were just used
+# usage: "python cleanup.py path-to-copy" (no trailing "/")
+
 import sys
 import shutil
 
