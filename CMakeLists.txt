@@ -42,7 +42,9 @@ target_link_libraries(UCN ${Geant4_LIBRARIES} )
 set(UCN_SCRIPTS
     vis.mac
     snapshots.in
-    run.mac
+    run.in
+    materials.xml
+    cleanup.py
   )
 
 foreach(_script ${UCN_SCRIPTS})

@@ -1,0 +1,9 @@
+# center of source
+#/gun/gunPosition 1837.33659595 -356.8 971.52677827
+
+#/gun/gunEnergyneV 100
+
+#/detector/setMaxTime_s 500
+#/run/reinitializeGeometry
+
+#/run/beamOn 1000
