@@ -20,6 +20,10 @@
      - <e> is in neV. Default is 100.0 neV.
   2. Set UCN initial position: "/gun/gunPosition <x> <y> <z>".
       - <x> <y> <z> are in millimeters. Default is  1.0 mm, 1.0 mm, 1.0 mm.
+  3. Set UCN gun to random direction: "/gun/gunRandomDirection <b>".
+      - <b> is "true" or "false". Default is "true".
+  4. Set UCN gun direction: "/gun/gunDirection <Vx> <Vy> <Vz>".
+      - <Vx> <Vy> <Vz> are unitless vector components.
 
 ### Inputs
 

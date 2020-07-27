@@ -20,6 +20,8 @@ public:
 
   virtual void GeneratePrimaries(G4Event*);
 
+  void SetGunToRandomDirection(G4bool b);
+  void SetGunDirection(G4ThreeVector uvw);
   void SetGunEnergy_neV(G4double e);
   void SetGunPosition(G4ThreeVector xyz);
 
@@ -27,8 +29,16 @@ private:
 
   G4ParticleGun*                 fParticleGun;
   UCNPrimaryGeneratorMessenger*  fGunMessenger;
+
+  // energy (neV)
   G4double                       fGunEnergy_neV;
-  G4ThreeVector                  fGunPosition;   // mm
+
+  // position (mm)
+  G4ThreeVector                  fGunPosition;
+
+  // direction, is it random?
+  G4bool                         fGunRandomDirection;
+  G4ThreeVector                  fGunDirection;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

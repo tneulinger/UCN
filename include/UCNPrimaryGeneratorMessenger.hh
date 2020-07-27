@@ -5,7 +5,9 @@
 #include "G4UImessenger.hh"
 
 class UCNPrimaryGeneratorAction;
+class G4UIcmdWithABool;
 class G4UIcmdWithADouble;
+class G4UIcmdWith3Vector;
 class G4UIcmdWith3VectorAndUnit;
 class G4UIdirectory;
 
@@ -24,6 +26,8 @@ class UCNPrimaryGeneratorMessenger: public G4UImessenger
     G4UIdirectory*               fGunDirectory;
     G4UIcmdWithADouble*          fSetGunEnergy_neVCmd;
     G4UIcmdWith3VectorAndUnit*   fSetGunPositionCmd;
+    G4UIcmdWithABool*            fSetGunToRandomDirectionCmd;
+    G4UIcmdWith3Vector*          fSetGunDirectionCmd;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
