@@ -18,6 +18,27 @@ filling_curve_length = 4069.6573961380577 # path length in x-z plane from beginn
 bottle_length = 588.8                     # length of bottle
 source_length = 584.5-1.5-40+75           # length in x-z plane from one end of source to cross
 
+# ===== returns true or false if UCN position is inside storage bottle
+# ===== used to remove other UCNs
+def in_bottle(x,y,z):
+    
+    # the z planes of the bottle inside
+    pos_z_end = +294.4
+    neg_z_end = -294.4
+    
+    # the x and y planes of the bottle outside
+    # big enough to get any UCN inside
+    box_hx = 69.0
+    box_hy = 69.0
+    
+    a = (x >= -box_hx) and (x <= +box_hx)
+    b = (y >= -box_hy) and (x <= +box_hy)
+    c = (z >= neg_z_end) and (z <= pos_z_end)
+    
+    inside = a and b and c
+    
+    return inside
+
 
 # ================= GENERAL =================
 
@@ -76,7 +97,7 @@ def tau(E, f, V, R, L):
     return 1/(wall + beta)
 
 
-# ================= IMPORT SIMULATION FILES =================
+# ================= IMPORT/EXPORT SIMULATION FILES =================
 
 # ===== Read in alive time output file
 def read_alive(aliveOutputFile):
@@ -121,35 +142,107 @@ def snapshots(snapshotInputFile, snapshotOutputFile):
             time   = float(line_list[0][:-1])
             energy = float(line_list[1][:-1])
             position_vector = (line_list[2][1:-2]).split(",")
-            momentum_vector = (line_list[3][1:-2]).split(",")
-            x,  y,  z  = np.array(position_vector).astype("float")  
-            px, py, pz = np.array(momentum_vector).astype("float")
+            velocity_vector = (line_list[3][1:-2]).split(",")
+            x, y, z = np.array(position_vector).astype("float")  
+            u, v, w = np.array(velocity_vector).astype("float")
             data[i,0] = time
             data[i,1] = energy
             data[i,2] = x
             data[i,3] = y
             data[i,4] = z
-            data[i,5] = px
-            data[i,6] = py
-            data[i,7] = pz
+            data[i,5] = u
+            data[i,6] = v
+            data[i,7] = w
 
     # create snapshots
-    snapshots = []
+    snapshots_ke  = [] # kinetic energy snapshots
+    snapshots_xyz = [] # position snapshots
+    snapshots_uvw = [] # velocity snapshots
+    
+    # for each snapshot time...
     for i in range(len(snapshot_times)):
+        
+        # the current snapshot time
         t  = snapshot_times[i]
+        
+        # find where all these times are (within snapshot_dt) in "data"
         snapshot_indices = np.where((t <= np.array(data[:,0])) & (np.array(data[:,0])<= t + snapshot_dt))
+        
+        # the length of snapshot indices is how many UCNs there are at this snapshot time
         n_UCNs_at_snapshot = len(snapshot_indices[0])
-        temp = np.zeros((n_UCNs_at_snapshot,3))
+        
+        temp_ke  = np.zeros((n_UCNs_at_snapshot,1))
+        temp_xyz = np.zeros((n_UCNs_at_snapshot,3))
+        temp_uvw = np.zeros((n_UCNs_at_snapshot,3))
         for j in range(n_UCNs_at_snapshot):
+            
+            # go through the data and get the entries at the current snapshot time
             data_row = data[snapshot_indices[0][j],:]
-            temp[j,0] = data_row[2] # x
-            temp[j,1] = data_row[3] # y
-            temp[j,2] = data_row[4] # z
-        snapshots.append(temp)
+            
+            temp_ke[j,0] = data_row[1] # KE
+            
+            temp_xyz[j,0] = data_row[2] # x
+            temp_xyz[j,1] = data_row[3] # y
+            temp_xyz[j,2] = data_row[4] # z
+            
+            temp_uvw[j,0] = data_row[5] # x
+            temp_uvw[j,1] = data_row[6] # y
+            temp_uvw[j,2] = data_row[7] # z
+            
+        snapshots_ke.append(temp_ke)
+        snapshots_xyz.append(temp_xyz)
+        snapshots_uvw.append(temp_uvw)
 
-    return [snapshot_times, snapshots]
+    return [snapshot_times, snapshots_ke, snapshots_xyz, snapshots_uvw]
 
 
+
+# ===== Create macro file from snapshot files at given time_index and for max_time
+# ===== only include those points inside the storage bottle
+def snapshot_to_macro(output_macro_filename, time_index, max_time, 
+                       snapshotInputFile, snapshotOutputFile):
+    
+    # import the snapshots
+    s = snapshots(snapshotInputFile, snapshotOutputFile)
+    s_t   = s[0] # time
+    s_ke  = s[1] # energy
+    s_xyz = s[2] # position
+    s_uvw = s[3] # velocity
+
+
+    # open the macro file for outputting 
+    f = open(output_macro_filename, 'w')
+
+    # write some information
+    f.write("# file name:        " + output_macro_filename + "\n")
+    f.write("# time index:       " + str(time_index) + " (= " + str(s_t[time_index]) + " s)\n")
+    f.write("# max time:         " + str(max_time) + " s\n")
+    f.write("# snapshout input:  " + snapshotInputFile + "\n")
+    f.write("# snapshout output: " + snapshotOutputFile + "\n")
+    f.write("\n")
+    
+    # write the max simulation time
+    f.write("/detector/setMaxTime_s" + " " + str(max_time) + "\n")
+    f.write("/run/reinitializeGeometry" + "\n\n")
+
+    # go through each UCN and set its energy, position, and direction then run
+    n = len(s_ke[time_index])
+    count = 0
+    for j in range(n):
+        ke = s_ke[time_index][j][0]
+        x, y, z = s_xyz[time_index][j]
+        u, v, w = s_uvw[time_index][j]
+        # only write to file if points are inside bottle
+        if in_bottle(x,y,z):
+            count += 1
+            f.write("#  ===== " + str(count) + " ===== #" + "\n")
+            f.write("/gun/gunEnergyneV"  + " " + str(ke) + "\n")
+            f.write("/gun/gunPosition"   + " " + str(x) + " " + str(y) + " " + str(z) + "\n")
+            f.write("/gun/gunDirection"  + " " + str(u) + " " + str(v) + " " + str(w) + "\n")
+            f.write("/run/beamOn 1" + "\n")
+            f.write("\n")
+
+    f.close()
     
 # # ================= ANALYSIS =================
     

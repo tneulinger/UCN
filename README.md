@@ -9,21 +9,21 @@
 ### Macro commands:
 
 #### Detector commands (/detector/):
-  1. Set maximum step size: "/detector/setMaxStep_mm <dx>".
-     - <dx> is in millimeters. Default is 0.5 mm.
+  1. Set maximum step size: "/detector/setMaxStep_mm dx".
+     - dx is in millimeters. Default is 0.5 mm.
      - Must be followed by "/run/reinitializeGeometry" to take effect.
-  2. Set maximum simulation time: "/detector/setMaxTime_s <t>".
-     - <t> is in seconds. Default is 100.0 seconds.
+  2. Set maximum simulation time: "/detector/setMaxTime_s t".
+     - t is in seconds. Default is 100.0 seconds.
      - Must be followed by "/run/reinitializeGeometry" to take effect.
 #### Particle gun commands (/gun/):
-  1. Set UCN initial KE: "/gun/gunEnergy_neV <e>".
-     - <e> is in neV. Default is 100.0 neV.
-  2. Set UCN initial position: "/gun/gunPosition <x> <y> <z>".
-      - <x> <y> <z> are in millimeters. Default is  1.0 mm, 1.0 mm, 1.0 mm.
-  3. Set UCN gun to random direction: "/gun/gunRandomDirection <b>".
-      - <b> is "true" or "false". Default is "true".
-  4. Set UCN gun direction: "/gun/gunDirection <Vx> <Vy> <Vz>".
-      - <Vx> <Vy> <Vz> are unitless vector components.
+  1. Set UCN initial KE: "/gun/gunEnergy_neV e".
+     - e is in neV. Default is 100.0 neV.
+  2. Set UCN initial position: "/gun/gunPosition x y z".
+      - x y z are in millimeters. Default is  1.0 mm, 1.0 mm, 1.0 mm.
+  3. Set UCN gun to random direction: "/gun/gunRandomDirection b".
+      - b is "true" or "false". Default is "true".
+  4. Set UCN gun direction: "/gun/gunDirection Vx Vy Vz".
+      - Vx Vy Vz are unitless vector components.
 
 ### Inputs
 
