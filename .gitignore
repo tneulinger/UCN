@@ -10,6 +10,7 @@ scripts/
 # ignore sun2 models
 models/sun2/
 models/test/
+models/old/
 
 # ignore to-do list
 TODO

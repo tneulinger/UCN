@@ -5,23 +5,25 @@
 <gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
 
   <define>
-      <position name="center" unit="mm" x="0" y="0" z="0"/>
+    <position name="center" unit="mm" x="0" y="0" z="0"/>
   </define>
 
   &materials;
 
   <solids>
-      <box  lunit="mm" name="world_solid" x="1000.00" y="1000.00" z="1000.00" />
+      <box  lunit="mm" name="world_solid" x="10000.00" y="10000.00" z="10000.00" />
   </solids>
 
   <structure>
   <volume name="world_volume">
       <materialref ref="Vacuum"/>
       <solidref ref="world_solid"/>
+
       <physvol>
-          <file name="bottle_open_Fakeonium.gdml"/>
+          <file name="bottle_closed_CYTOP.gdml"/>
           <positionref ref="center"/>
       </physvol>
+
   </volume>
   </structure>
 

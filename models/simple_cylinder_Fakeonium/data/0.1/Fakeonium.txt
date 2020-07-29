@@ -1,7 +1,0 @@
-0.1        // DIFFUSION
-109.0      // FERMIPOT
-0.0        // SPINFLIP
-1.0e-4     // LOSS
-0.0        // LOSSCS
-0.0069     // ABSCS
-4.577      // SCATCS

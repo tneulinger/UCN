@@ -1,7 +1,0 @@
-/gun/gunPosition 0 0 0 mm
-/gun/gunEnergyneV 100
-
-/detector/setMaxTime_s 500
-/run/reinitializeGeometry
-
-/run/beamOn 1000

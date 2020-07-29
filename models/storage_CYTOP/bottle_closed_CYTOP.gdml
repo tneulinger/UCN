@@ -40,18 +40,13 @@
           <positionref ref="lit_cyl2_center" />
           <rotationref ref="rotateX" />
         </subtraction>
-        
-        <subtraction name="step4_solid">
-          <first ref="step3_solid" />
-          <second ref="opening_solid" />
-          <positionref ref="opening_center" />
-        </subtraction>
+
     </solids>
 
     <structure>
         <volume name="bottle_volume">
-            <materialref ref="Fakeonium"/>
-            <solidref ref="step4_solid"/>
+            <materialref ref="CYTOP"/>
+            <solidref ref="step3_solid"/>
         </volume>
     </structure>
 
