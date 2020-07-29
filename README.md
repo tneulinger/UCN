@@ -102,9 +102,7 @@ UCN materials properties are split into two categories, boundary and bulk.
 ## Tutorials
 
 ### Basic example:
-  1. The basic example consists of a "source" box with a hole in it leading to
-     pipe terminated by a detector.
-  2. To build and run...
+  1. To build and run...
       ```
       $ git clone https://github.com/tneulinger/UCN
       $ cd UCN
@@ -112,8 +110,8 @@ UCN materials properties are split into two categories, boundary and bulk.
       $ cd build
       $ cmake ../
       $ make
-      $ cp ../models/example/*.gdml ./
-      $ ./UCN example.gdml
+      $ cp ../models/examples/box/*.gdml ./
+      $ ./UCN world.gdml
       ```
   3. Some basic UI commands are...
       ```
@@ -123,8 +121,6 @@ UCN materials properties are split into two categories, boundary and bulk.
   4. Run information is output to "snapshots.out", "alive.out", and
      "detector.out".
 
-     ```
-
 ## Add new material:
-  1. Update materials/MATERIALS with desired material according to GDML XML format.
+  1. Update materials.xml with desired material according to GDML XML format.
   2. Add "NewMaterial.txt" to materials/ directory with proper format.
