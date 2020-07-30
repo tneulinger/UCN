@@ -48,9 +48,11 @@ G4bool UCNTrackerSD::ProcessHits(G4Step* aStep,
 
   UCNTrackerHit* newHit = new UCNTrackerHit();
 
-  G4double time = aStep->GetTrack()->GetGlobalTime();
-  newHit->SetTime(time);
+  newHit->SetTime(aStep->GetTrack()->GetGlobalTime());
+  newHit->SetEnergy(aStep->GetPostStepPoint()->GetKineticEnergy());
   newHit->SetPos(aStep->GetPostStepPoint()->GetPosition());
+  newHit->SetMomentum(aStep->GetPostStepPoint()->GetMomentum());
+
 
   fHitsCollection->insert( newHit );
 

@@ -17,7 +17,9 @@ G4ThreadLocal G4Allocator<UCNTrackerHit>* UCNTrackerHitAllocator=0;
 UCNTrackerHit::UCNTrackerHit()
  : G4VHit(),
    fTime(0.),
-   fPos(G4ThreeVector())
+   fEnergy(0.),
+   fPos(G4ThreeVector()),
+   fMomentum(G4ThreeVector())
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -30,7 +32,9 @@ UCNTrackerHit::UCNTrackerHit(const UCNTrackerHit& right)
   : G4VHit()
 {
   fTime      = right.fTime;
+  fEnergy    = right.fEnergy;
   fPos       = right.fPos;
+  fMomentum  = right.fMomentum;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -38,7 +42,9 @@ UCNTrackerHit::UCNTrackerHit(const UCNTrackerHit& right)
 const UCNTrackerHit& UCNTrackerHit::operator=(const UCNTrackerHit& right)
 {
   fTime      = right.fTime;
+  fEnergy    = right.fEnergy;
   fPos       = right.fPos;
+  fMomentum  = right.fMomentum;
 
   return *this;
 }
@@ -72,8 +78,11 @@ void UCNTrackerHit::Draw()
 void UCNTrackerHit::Print()
 {
 
-  G4double timeInSeconds = fTime*1e-9;
-  detectorFile << timeInSeconds << ", " << fPos << std::endl;
+  G4double timeInSeconds = fTime*1e-9;              // time in seconds
+  G4double EneV = fEnergy*1e6*1e9;                  // energy in neV
+  G4ThreeVector Vmps = fMomentum*319075.6614201027; // velocity in meters per second
+
+  detectorFile << timeInSeconds << ", " << EneV << ", " << fPos << ", " << Vmps << std::endl;
 
   //
   // G4cout

@@ -32,18 +32,25 @@ class UCNTrackerHit : public G4VHit
     virtual void Print();
 
     // Set methods
-    void SetPos      (G4ThreeVector xyz){ fPos = xyz; };
-    void SetTime     (G4double time)    { fTime = time; };
+    void SetTime     (G4double time)     { fTime = time; };
+    void SetEnergy   (G4double e)        { fEnergy = e; };
+    void SetPos      (G4ThreeVector xyz) { fPos = xyz; };
+    void SetMomentum (G4ThreeVector uvw) { fMomentum = uvw; };
 
     // Get methods
-    G4ThreeVector GetPos() const { return fPos; };
-    G4double GetTime() const     { return fTime; };
+    G4double GetTime()          const { return fTime; };
+    G4double GetEnergy()        const { return fEnergy; };
+    G4ThreeVector GetPos()      const { return fPos; };
+    G4ThreeVector GetMomentum() const { return fMomentum; };
+
 
   private:
 
       G4int         fTrackID;
-      G4ThreeVector fPos;
       G4double      fTime;
+      G4double      fEnergy;
+      G4ThreeVector fPos;
+      G4ThreeVector fMomentum;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
