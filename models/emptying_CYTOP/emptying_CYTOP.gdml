@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+  <define>
+    <position name="center" unit="mm" x="0" y="0" z="0"/>
+
+    <position name="bottle_pipe_center" unit="mm" x="0" y="0" z="818.045"/>
+
+    <position name="elbow1_center" unit="mm" x="70" y="0" z="1336.69"/>
+    <rotation name="elbow1_rot" x="-90" unit="deg"/>
+
+    <position name="middle_pipe_center" unit="mm" x="283.71383571" y="0" z="1540.90677827" />
+    <rotation name="middle_pipe_rot" y="-60" unit="deg" />
+
+    <position name="elbow2_center" unit="mm" x="497.42767143" y="0" z="1745.12355653"/>
+    <rotation name="elbow2_rot" x="-90" unit="deg"/>
+
+    <position name="elbow2pipe_center" unit="mm" x="567.42767143" y="0" z="1763.76855653"/>
+
+    <position name="bend_center" unit="mm" x="567.42767143" y="-100.00" z="1782.41355653"/>
+    <rotation name="bend_rot" y="90" unit="deg"/>
+
+    <position name="horn_center" unit="mm" x="567.42767143" y="-165.10" z="1882.41355653"/>
+    <rotation name="horn_rot" x="90" unit="deg"/>
+
+    <position name="down_pipe_center" unit="mm" x="567.42767143" y="-345.20" z="1882.41355653"/>
+    <rotation name="down_pipe_rot" x="90" unit="deg"/>
+
+    <position name="dunya_center" unit="mm" x="567.42767143" y="-465.30" z="1882.41355653"/>
+    <rotation name="dunya_rot" x="90" unit="deg"/>
+
+  </define>
+
+  &materials;
+
+  <solids>
+      <box  lunit="mm" name="world_solid" x="10000.00" y="10000.00" z="10000.00" />
+  </solids>
+
+  <structure>
+  <volume name="world_volume">
+      <materialref ref="Vacuum"/>
+      <solidref ref="world_solid"/>
+
+      <physvol>
+          <file name="bottle_open_CYTOP.gdml"/>
+          <positionref ref="center"/>
+      </physvol>
+
+      <physvol>
+          <file name="bottle_pipe.gdml"/>
+          <positionref ref="bottle_pipe_center"/>
+      </physvol>
+
+      <physvol>
+          <file name="elbow1.gdml"/>
+          <positionref ref="elbow1_center"/>
+          <rotationref ref="elbow1_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="middle_pipe.gdml"/>
+          <positionref ref="middle_pipe_center"/>
+          <rotationref ref="middle_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="elbow2.gdml"/>
+          <positionref ref="elbow2_center"/>
+          <rotationref ref="elbow2_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="elbow2pipe.gdml"/>
+          <positionref ref="elbow2pipe_center"/>
+      </physvol>
+
+      <physvol>
+          <file name="bend.gdml"/>
+          <positionref ref="bend_center"/>
+          <rotationref ref="bend_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="horn.gdml"/>
+          <positionref ref="horn_center"/>
+          <rotationref ref="horn_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="down_pipe.gdml"/>
+          <positionref ref="down_pipe_center"/>
+          <rotationref ref="down_pipe_rot" />
+      </physvol>
+
+      <physvol>
+          <file name="dunya.gdml"/>
+          <positionref ref="dunya_center"/>
+          <rotationref ref="dunya_rot" />
+      </physvol>
+
+  </volume>
+  </structure>
+
+  <setup name="Default" version="1.0">
+    <world ref="world_volume"/>
+  </setup>
+
+</gdml>

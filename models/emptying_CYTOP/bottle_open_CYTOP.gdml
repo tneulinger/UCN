@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    <define>
+        <position name="center" unit="mm" x="0" y="0" z="0"/>
+        <position name="lit_cyl1_center" unit="mm" x="0" y="25" z="244.4"/>
+        <position name="lit_cyl2_center" unit="mm" x="0" y="24.5" z="244.4"/>
+        <position name="opening_center" unit="mm" x="0" y="0" z="291.9"/>
+        <rotation name="rotateX" x="90" unit="deg"/>
+    </define>
+
+    &materials;
+
+    <solids>
+        <box  lunit="mm" name="big_box_solid" x="138.00" y="138.00" z="598.8" />
+        <tube lunit="mm" name="big_cyl_solid" rmin="0" rmax="45" z="588.8" deltaphi="360" aunit="deg"/>
+        <tube lunit="mm" name="lit_cyl1_solid" rmin="0" rmax="40" z="50.0" deltaphi="360" aunit="deg"/>
+        <tube lunit="mm" name="lit_cyl2_solid" rmin="0" rmax="25.05" z="59.0" deltaphi="360" aunit="deg"/>
+        <tube lunit="mm" name="opening_solid" rmin="0" rmax="10.0" z="15.0" deltaphi="360" aunit="deg"/>
+
+        <subtraction name="step1_solid">
+          <first ref="big_box_solid" />
+          <second ref="big_cyl_solid" />
+          <positionref ref="center" />
+        </subtraction>
+
+        <subtraction name="step2_solid">
+          <first ref="step1_solid" />
+          <second ref="lit_cyl1_solid" />
+          <positionref ref="lit_cyl1_center" />
+          <rotationref ref="rotateX" />
+        </subtraction>
+
+        <subtraction name="step3_solid">
+          <first ref="step2_solid" />
+          <second ref="lit_cyl2_solid" />
+          <positionref ref="lit_cyl2_center" />
+          <rotationref ref="rotateX" />
+        </subtraction>
+        
+        <subtraction name="step4_solid">
+          <first ref="step3_solid" />
+          <second ref="opening_solid" />
+          <positionref ref="opening_center" />
+        </subtraction>
+    </solids>
+
+    <structure>
+        <volume name="bottle_volume">
+            <materialref ref="CYTOP"/>
+            <solidref ref="step4_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="bottle_volume"/>
+    </setup>
+
+</gdml>

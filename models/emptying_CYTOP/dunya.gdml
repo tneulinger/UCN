@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    &materials;
+
+    <solids>
+        <tube lunit="mm" name="dunya_solid" rmin="0.0" rmax="39.9" z="10.00" deltaphi="360" aunit="deg"/>
+    </solids>
+
+    <structure>
+        <volume name="dunya_volume">
+            <materialref ref="Detector"/>
+            <solidref ref="dunya_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="dunya_volume"/>
+    </setup>
+
+</gdml>

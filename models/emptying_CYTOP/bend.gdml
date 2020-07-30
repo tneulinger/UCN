@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE gdml [
+<!ENTITY materials SYSTEM "materials.xml">
+]>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+
+    &materials;
+
+    <solids>
+        <torus name="bend_solid" lunit= "mm" rmin="25.0" rmax="26.5" rtor="100.0" deltaphi="90" startphi="0" aunit="deg" />
+    </solids>
+
+    <structure>
+        <volume name="bend_volume">
+            <materialref ref="Steel"/>
+            <solidref ref="bend_solid"/>
+        </volume>
+    </structure>
+
+    <setup name="Default" version="1.0">
+        <world ref="bend_volume"/>
+    </setup>
+
+</gdml>
